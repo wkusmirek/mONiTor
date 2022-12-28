@@ -40,22 +40,7 @@ const (
 )
 
 var (
-	clusterBrokers                     *prometheus.Desc
-	clusterBrokerInfo                  *prometheus.Desc
-	topicPartitions                    *prometheus.Desc
-	topicCurrentOffset                 *prometheus.Desc
-	topicOldestOffset                  *prometheus.Desc
-	topicPartitionLeader               *prometheus.Desc
-	topicPartitionReplicas             *prometheus.Desc
-	topicPartitionInSyncReplicas       *prometheus.Desc
-	topicPartitionUsesPreferredReplica *prometheus.Desc
-	topicUnderReplicatedPartition      *prometheus.Desc
-	consumergroupCurrentOffset         *prometheus.Desc
-	consumergroupCurrentOffsetSum      *prometheus.Desc
-	consumergroupLag                   *prometheus.Desc
-	consumergroupLagSum                *prometheus.Desc
-	consumergroupLagZookeeper          *prometheus.Desc
-	consumergroupMembers               *prometheus.Desc
+	clusterBrokers *prometheus.Desc
 )
 
 // Exporter collects Kafka stats from the given server and exports them using
@@ -295,48 +280,39 @@ func NewExporter(opts kafkaOpts, topicFilter string, groupFilter string) (*Expor
 // implements prometheus.Collector.
 func (e *Exporter) Describe(ch chan<- *prometheus.Desc) {
 	ch <- clusterBrokers
-	ch <- topicCurrentOffset
-	ch <- topicOldestOffset
-	ch <- topicPartitions
-	ch <- topicPartitionLeader
-	ch <- topicPartitionReplicas
-	ch <- topicPartitionInSyncReplicas
-	ch <- topicPartitionUsesPreferredReplica
-	ch <- topicUnderReplicatedPartition
-	ch <- consumergroupCurrentOffset
-	ch <- consumergroupCurrentOffsetSum
-	ch <- consumergroupLag
-	ch <- consumergroupLagZookeeper
-	ch <- consumergroupLagSum
 }
 
 // Collect fetches the stats from configured Kafka location and delivers them
 // as Prometheus metrics. It implements prometheus.Collector.
 func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
-	if e.allowConcurrent {
-		e.collect(ch)
-		return
-	}
+	//	   	if e.allowConcurrent {
+	e.collect(ch)
+	return
+	//	   	}
 	// Locking to avoid race add
-	e.sgMutex.Lock()
-	e.sgChans = append(e.sgChans, ch)
-	// Safe to compare length since we own the Lock
-	if len(e.sgChans) == 1 {
-		e.sgWaitCh = make(chan struct{})
-		go e.collectChans(e.sgWaitCh)
-	} else {
-		klog.V(TRACE).Info("concurrent calls detected, waiting for first to finish")
-	}
-	// Put in another variable to ensure not overwriting it in another Collect once we wait
-	waiter := e.sgWaitCh
-	e.sgMutex.Unlock()
-	// Released lock, we have insurance that our chan will be part of the collectChan slice
-	<-waiter
+	/*e.sgMutex.Lock()
+	  e.sgChans = append(e.sgChans, ch)
+	  // Safe to compare length since we own the Lock
+
+	  	if len(e.sgChans) == 1 {
+	  		e.sgWaitCh = make(chan struct{})
+	  		go e.collectChans(e.sgWaitCh)
+	  	} else {
+
+	  		klog.V(TRACE).Info("concurrent calls detected, waiting for first to finish")
+	  	}
+
+	  // Put in another variable to ensure not overwriting it in another Collect once we wait
+	  waiter := e.sgWaitCh
+	  e.sgMutex.Unlock()
+	  // Released lock, we have insurance that our chan will be part of the collectChan slice
+	  <-waiter*/
 	// collectChan finished
+
 }
 
 func (e *Exporter) collectChans(quit chan struct{}) {
-	original := make(chan prometheus.Metric)
+	/*original := make(chan prometheus.Metric)
 	container := make([]prometheus.Metric, 0, 100)
 	go func() {
 		for metric := range original {
@@ -357,11 +333,15 @@ func (e *Exporter) collectChans(quit chan struct{}) {
 	// Notify remaining waiting Collect they can return
 	close(quit)
 	// Release the lock so Collect can append to the slice again
-	e.sgMutex.Unlock()
+	e.sgMutex.Unlock()*/
 }
 
 func (e *Exporter) collect(ch chan<- prometheus.Metric) {
-	var wg = sync.WaitGroup{}
+	files,_ := ioutil.ReadDir("/tmp")
+	ch <- prometheus.MustNewConstMetric(
+		clusterBrokers, prometheus.GaugeValue, float64(len(files)),
+	)
+	/*var wg = sync.WaitGroup{}
 	ch <- prometheus.MustNewConstMetric(
 		clusterBrokers, prometheus.GaugeValue, float64(len(e.client.Brokers())),
 	)
@@ -661,6 +641,7 @@ func (e *Exporter) collect(ch chan<- prometheus.Metric) {
 	} else {
 		klog.Errorln("No valid broker, cannot get consumer group metrics")
 	}
+	*/
 }
 
 func init() {
@@ -799,7 +780,7 @@ func setup(
 		"Number of Brokers in the Kafka Cluster.",
 		nil, labels,
 	)
-	clusterBrokerInfo = prometheus.NewDesc(
+	/*clusterBrokerInfo = prometheus.NewDesc(
 		prometheus.BuildFQName(namespace, "", "broker_info"),
 		"Information about the Kafka Broker.",
 		[]string{"id", "address"}, labels,
@@ -884,7 +865,7 @@ func setup(
 		prometheus.BuildFQName(namespace, "consumergroup", "members"),
 		"Amount of members in a consumer group",
 		[]string{"consumergroup"}, labels,
-	)
+	)*/
 
 	if logSarama {
 		sarama.Logger = log.New(os.Stdout, "[sarama] ", log.LstdFlags)
@@ -892,20 +873,20 @@ func setup(
 
 	exporter, err := NewExporter(opts, topicFilter, groupFilter)
 	if err != nil {
-		klog.Fatalln(err)
+		//			klog.Fatalln(err)
 	}
-	defer exporter.client.Close()
+	//		defer exporter.client.Close()
 	prometheus.MustRegister(exporter)
 
 	http.Handle(metricsPath, promhttp.Handler())
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		_, err := w.Write([]byte(`<html>
-	        <head><title>Kafka Exporter</title></head>
-	        <body>
-	        <h1>Kafka Exporter</h1>
-	        <p><a href='` + metricsPath + `'>Metrics</a></p>
-	        </body>
-	        </html>`))
+		        <head><title>Kafka Exporter</title></head>
+		        <body>
+		        <h1>Kafka Exporter</h1>
+		        <p><a href='` + metricsPath + `'>Metrics</a></p>
+		        </body>
+		        </html>`))
 		if err != nil {
 			klog.Error("Error handle / request", err)
 		}
