@@ -706,11 +706,12 @@ func toFlagIntVar(name string, help string, value int, valueString string, targe
 
 func main() {
 	var (
-		listenAddress = toFlagString("web.listen-address", "Address to listen on for web interface and telemetry.", ":9308")
-		metricsPath   = toFlagString("web.telemetry-path", "Path under which to expose metrics.", "/metrics")
-		topicFilter   = toFlagString("topic.filter", "Regex that determines which topics to collect.", ".*")
-		groupFilter   = toFlagString("group.filter", "Regex that determines which consumer groups to collect.", ".*")
-		logSarama     = toFlagBool("log.enable-sarama", "Turn on Sarama logging, default is false.", false, "false")
+		ontFast5DirPath = toFlagString("ont-fast5-dir-path", "Path to the dir where fast5 from ONT sequencer will be stored.", "/tmp")
+		listenAddress   = toFlagString("web.listen-address", "Address to listen on for web interface and telemetry.", ":9308")
+		metricsPath     = toFlagString("web.telemetry-path", "Path under which to expose metrics.", "/metrics")
+		topicFilter     = toFlagString("topic.filter", "Regex that determines which topics to collect.", ".*")
+		groupFilter     = toFlagString("group.filter", "Regex that determines which consumer groups to collect.", ".*")
+		logSarama       = toFlagBool("log.enable-sarama", "Turn on Sarama logging, default is false.", false, "false")
 
 		opts = kafkaOpts{}
 	)
@@ -767,10 +768,11 @@ func main() {
 		}
 	}
 
-	setup(*listenAddress, *metricsPath, *topicFilter, *groupFilter, *logSarama, opts, labels)
+	setup(*ontFast5DirPath, *listenAddress, *metricsPath, *topicFilter, *groupFilter, *logSarama, opts, labels)
 }
 
 func setup(
+	ontFast5DirPath string,
 	listenAddress string,
 	metricsPath string,
 	topicFilter string,
