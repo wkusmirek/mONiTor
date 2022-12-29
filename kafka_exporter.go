@@ -9,11 +9,13 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"os/exec"
 	"regexp"
 	"strconv"
 	"strings"
 	"sync"
 	"time"
+	"encoding/json"
 
 	"github.com/Shopify/sarama"
 	"github.com/krallistic/kazoo-go"
@@ -41,6 +43,7 @@ const (
 
 var (
 	clusterBrokers *prometheus.Desc
+	topicOldestOffset	*prometheus.Desc
 )
 
 // Exporter collects Kafka stats from the given server and exports them using
@@ -280,6 +283,7 @@ func NewExporter(opts kafkaOpts, topicFilter string, groupFilter string) (*Expor
 // implements prometheus.Collector.
 func (e *Exporter) Describe(ch chan<- *prometheus.Desc) {
 	ch <- clusterBrokers
+	ch <- topicOldestOffset
 }
 
 // Collect fetches the stats from configured Kafka location and delivers them
@@ -312,7 +316,7 @@ func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
 }
 
 func (e *Exporter) collectChans(quit chan struct{}) {
-	/*original := make(chan prometheus.Metric)
+	original := make(chan prometheus.Metric)
 	container := make([]prometheus.Metric, 0, 100)
 	go func() {
 		for metric := range original {
@@ -321,7 +325,6 @@ func (e *Exporter) collectChans(quit chan struct{}) {
 	}()
 	e.collect(original)
 	close(original)
-	// Lock to avoid modification on the channel slice
 	e.sgMutex.Lock()
 	for _, ch := range e.sgChans {
 		for _, metric := range container {
@@ -330,17 +333,48 @@ func (e *Exporter) collectChans(quit chan struct{}) {
 	}
 	// Reset the slice
 	e.sgChans = e.sgChans[:0]
-	// Notify remaining waiting Collect they can return
 	close(quit)
-	// Release the lock so Collect can append to the slice again
-	e.sgMutex.Unlock()*/
+	e.sgMutex.Unlock()
 }
 
 func (e *Exporter) collect(ch chan<- prometheus.Metric) {
-	files,_ := ioutil.ReadDir("/tmp")
-	ch <- prometheus.MustNewConstMetric(
-		clusterBrokers, prometheus.GaugeValue, float64(len(files)),
-	)
+
+/*	var vars map[string]interface{}
+	result, err := exec.Command("python3", "python/parse_ont_fast5_file.py", "/tmp/5210_N128870_20180726_FAH82747_MN19691_sequencing_run_Alfred_imp4restart03_20813_read_15_ch_500_strand.fast5").Output()
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = json.Unmarshal(result, &vars)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%#v", vars)*/
+//	fmt.Printf("%#v", vars["read.channel_info.channel_number"].(string))
+
+	files,_ := ioutil.ReadDir("/tmp/fast5")
+	for _, file := range files {
+		var vars map[string]interface{}
+		result, err := exec.Command("python3", "python/parse_ont_fast5_file.py", "/tmp/fast5/"+file.Name()).Output()
+		if err != nil {
+			log.Fatal(err)
+		}
+		err = json.Unmarshal(result, &vars)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Printf("%#v", vars)
+	
+		ch <- prometheus.MustNewConstMetric(
+			topicOldestOffset, prometheus.GaugeValue, float64(1), file.Name(),
+		)
+	}
+	/*for _, file := range files {
+		fmt.Printf("%#v", file)
+		ch <- prometheus.MustNewConstMetric(
+			clusterBrokers, prometheus.GaugeValue, float64(len(files)),
+		)
+	}*/
+	
 	/*var wg = sync.WaitGroup{}
 	ch <- prometheus.MustNewConstMetric(
 		clusterBrokers, prometheus.GaugeValue, float64(len(e.client.Brokers())),
@@ -794,14 +828,14 @@ func setup(
 		prometheus.BuildFQName(namespace, "topic", "partition_current_offset"),
 		"Current Offset of a Broker at Topic/Partition",
 		[]string{"topic", "partition"}, labels,
-	)
+	)*/
 	topicOldestOffset = prometheus.NewDesc(
 		prometheus.BuildFQName(namespace, "topic", "partition_oldest_offset"),
 		"Oldest Offset of a Broker at Topic/Partition",
-		[]string{"topic", "partition"}, labels,
+		[]string{"channel"}, labels,
 	)
 
-	topicPartitionLeader = prometheus.NewDesc(
+	/*topicPartitionLeader = prometheus.NewDesc(
 		prometheus.BuildFQName(namespace, "topic", "partition_leader"),
 		"Leader Broker ID of this Topic/Partition",
 		[]string{"topic", "partition"}, labels,
