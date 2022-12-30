@@ -31,8 +31,8 @@ import (
 )
 
 const (
-	namespace = "kafka"
-	clientID  = "kafka_exporter"
+	namespace = "ont"
+	clientID  = "ont_exporter"
 )
 
 const (
@@ -46,8 +46,6 @@ var (
 	topicOldestOffset *prometheus.Desc
 )
 
-// Exporter collects Kafka stats from the given server and exports them using
-// the prometheus metrics package.
 type Exporter struct {
 	client                  sarama.Client
 	topicFilter             *regexp.Regexp
@@ -926,7 +924,6 @@ func setup(
 		}
 	})
 	http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
-		// need more specific sarama check
 		_, err := w.Write([]byte("ok"))
 		if err != nil {
 			klog.Error("Error handle /healthz request", err)

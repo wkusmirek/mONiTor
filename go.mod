@@ -1,4 +1,4 @@
-module github.com/danielqsj/kafka_exporter
+module github.com/wkusmirek/mONiTor
 
 go 1.19
 

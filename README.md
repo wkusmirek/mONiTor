@@ -1,9 +1,9 @@
-![kafka_exporter](https://socialify.git.ci/danielqsj/kafka_exporter/image?description=1&font=Inter&forks=1&pattern=Signal&stargazers=1&theme=Light)
+![mONiTor](https://socialify.git.ci/wkusmirek/mONiTor/image?description=1&font=Inter&forks=1&pattern=Signal&stargazers=1&theme=Light)
 
 mONiTor
 ==============
 
-[![CI](https://github.com/danielqsj/kafka_exporter/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/danielqsj/kafka_exporter/actions/workflows/ci.yml)[![Docker Pulls](https://img.shields.io/docker/pulls/danielqsj/kafka-exporter.svg)](https://hub.docker.com/r/danielqsj/kafka-exporter)[![Go Report Card](https://goreportcard.com/badge/github.com/danielqsj/kafka_exporter)](https://goreportcard.com/report/github.com/danielqsj/kafka_exporter)[![Language](https://img.shields.io/badge/language-Go-red.svg)](https://github.com/danielqsj/kafka-exporter)[![GitHub release](https://img.shields.io/badge/release-1.6.0-green.svg)](https://github.com/danielqsj/kafka-exporter/releases)[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
+[![CI](https://github.com/wkusmirek/mONiTor/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/wkusmirek/mONiTor/actions/workflows/ci.yml)[![Docker Pulls](https://img.shields.io/docker/pulls/wkusmirek/mONiTor.svg)](https://hub.docker.com/r/wkusmirek/mONiTor)[![Go Report Card](https://goreportcard.com/badge/github.com/wkusmirek/kafka_exporter)](https://goreportcard.com/report/github.com/wkusmirek/kafka_exporter)[![Language](https://img.shields.io/badge/language-Go-red.svg)](https://github.com/wkusmirek/mONiTor)[![GitHub release](https://img.shields.io/badge/release-1.6.0-green.svg)](https://github.com/wkusmirek/mONiTor/releases)[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 Kafka exporter for Prometheus. For other metrics from Kafka, have a look at the [JMX exporter](https://github.com/prometheus/jmx_exporter).
 
@@ -26,8 +26,6 @@ Table of Contents
 	-	[Topics](#topics)
 	-	[Consumer Groups](#consumer-groups)
 -	[Grafana Dashboard](#grafana-dashboard)
--   [Contribute](#contribute)
--   [Donation](#donation)
 -   [License](#license)
 
 Compatibility
@@ -38,14 +36,14 @@ Support [Apache Kafka](https://kafka.apache.org) version 0.10.1.0 (and later).
 Dependency
 ----------
 
--	[Prometheus](https://prometheus.io)
--	[Sarama](https://shopify.github.io/sarama)
 -	[Golang](https://golang.org)
+-	[Prometheus](https://prometheus.io)
+-	[Grafana](https://grafana.com)
 
 Download
 --------
 
-Binary can be downloaded from [Releases](https://github.com/danielqsj/kafka_exporter/releases) page.
+Binary can be downloaded from [Releases](https://github.com/wkusmirek/mONiTor/releases) page.
 
 Compile
 -------
@@ -66,10 +64,10 @@ Docker Hub Image
 ----------------
 
 ```shell
-docker pull danielqsj/kafka-exporter:latest
+docker pull wkusmirek/mONiTor:latest
 ```
 
-It can be used directly instead of having to build the image yourself. ([Docker Hub danielqsj/kafka-exporter](https://hub.docker.com/r/danielqsj/kafka-exporter)\)
+It can be used directly instead of having to build the image yourself. ([Docker Hub wkusmirek/mONiTor](https://hub.docker.com/r/wkusmirek/mONiTor)\)
 
 Run
 ---
@@ -83,7 +81,7 @@ kafka_exporter --kafka.server=kafka:9092 [--kafka.server=another-server ...]
 ### Run Docker Image
 
 ```
-docker run -ti --rm -p 9308:9308 danielqsj/kafka-exporter --kafka.server=kafka:9092 [--kafka.server=another-server ...]
+docker run -ti --rm -p 9308:9308 wkusmirek/mONiTor --kafka.server=kafka:9092 [--kafka.server=another-server ...]
 ```
 
 Flags
@@ -242,35 +240,7 @@ Grafana Dashboard ID: 7589, name: Kafka Exporter Overview.
 
 For details of the dashboard please see [Kafka Exporter Overview](https://grafana.com/dashboards/7589).
 
-Contribute
-----------
-
-If you like Kafka Exporter, please give me a star. This will help more people know Kafka Exporter.
-
-Please feel free to send me [pull requests](https://github.com/danielqsj/kafka_exporter/pulls).
-
-Contributors ✨
-----------
-
-Thanks goes to these wonderful people:
-
-<a href="https://github.com/danielqsj/kafka_exporter/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=danielqsj/kafka_exporter" />
-</a>
-
-Star ⭐
-----------
-
-[![Stargazers over time](https://starchart.cc/danielqsj/kafka_exporter.svg)](https://starchart.cc/danielqsj/kafka_exporter)
-
-Donation
---------
-
-Your donation will encourage me to continue to improve Kafka Exporter. Support Alipay donation.
-
-![](https://github.com/danielqsj/kafka_exporter/raw/master/alipay.jpg)
-
 License
 -------
 
-Code is licensed under the [Apache License 2.0](https://github.com/danielqsj/kafka_exporter/blob/master/LICENSE).
+Code is licensed under the [Apache License 2.0](https://github.com/wkusmirek/mONiToR/blob/master/LICENSE).
