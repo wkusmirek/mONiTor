@@ -3,6 +3,7 @@ package main
 import (
 	"crypto/tls"
 	"crypto/x509"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"io/ioutil"
@@ -15,7 +16,6 @@ import (
 	"strings"
 	"sync"
 	"time"
-	"encoding/json"
 
 	"github.com/Shopify/sarama"
 	"github.com/krallistic/kazoo-go"
@@ -42,8 +42,8 @@ const (
 )
 
 var (
-	clusterBrokers *prometheus.Desc
-	topicOldestOffset	*prometheus.Desc
+	clusterBrokers    *prometheus.Desc
+	topicOldestOffset *prometheus.Desc
 )
 
 // Exporter collects Kafka stats from the given server and exports them using
@@ -339,19 +339,19 @@ func (e *Exporter) collectChans(quit chan struct{}) {
 
 func (e *Exporter) collect(ch chan<- prometheus.Metric) {
 
-/*	var vars map[string]interface{}
-	result, err := exec.Command("python3", "python/parse_ont_fast5_file.py", "/tmp/5210_N128870_20180726_FAH82747_MN19691_sequencing_run_Alfred_imp4restart03_20813_read_15_ch_500_strand.fast5").Output()
-	if err != nil {
-		log.Fatal(err)
-	}
-	err = json.Unmarshal(result, &vars)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Printf("%#v", vars)*/
-//	fmt.Printf("%#v", vars["read.channel_info.channel_number"].(string))
+	/*	var vars map[string]interface{}
+		result, err := exec.Command("python3", "python/parse_ont_fast5_file.py", "/tmp/5210_N128870_20180726_FAH82747_MN19691_sequencing_run_Alfred_imp4restart03_20813_read_15_ch_500_strand.fast5").Output()
+		if err != nil {
+			log.Fatal(err)
+		}
+		err = json.Unmarshal(result, &vars)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Printf("%#v", vars)*/
+	//	fmt.Printf("%#v", vars["read.channel_info.channel_number"].(string))
 
-	files,_ := ioutil.ReadDir("/tmp/fast5")
+	files, _ := ioutil.ReadDir("/tmp/fast5")
 	for _, file := range files {
 		var vars map[string]interface{}
 		result, err := exec.Command("python3", "python/parse_ont_fast5_file.py", "/tmp/fast5/"+file.Name()).Output()
@@ -363,7 +363,7 @@ func (e *Exporter) collect(ch chan<- prometheus.Metric) {
 			log.Fatal(err)
 		}
 		//fmt.Printf("%#v", vars)
-	
+
 		ch <- prometheus.MustNewConstMetric(
 			topicOldestOffset, prometheus.GaugeValue, float64(1), file.Name(),
 		)
@@ -374,7 +374,7 @@ func (e *Exporter) collect(ch chan<- prometheus.Metric) {
 			clusterBrokers, prometheus.GaugeValue, float64(len(files)),
 		)
 	}*/
-	
+
 	/*var wg = sync.WaitGroup{}
 	ch <- prometheus.MustNewConstMetric(
 		clusterBrokers, prometheus.GaugeValue, float64(len(e.client.Brokers())),

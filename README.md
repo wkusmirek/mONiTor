@@ -1,6 +1,6 @@
 ![kafka_exporter](https://socialify.git.ci/danielqsj/kafka_exporter/image?description=1&font=Inter&forks=1&pattern=Signal&stargazers=1&theme=Light)
 
-kafka_exporter
+mONiTor
 ==============
 
 [![CI](https://github.com/danielqsj/kafka_exporter/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/danielqsj/kafka_exporter/actions/workflows/ci.yml)[![Docker Pulls](https://img.shields.io/docker/pulls/danielqsj/kafka-exporter.svg)](https://hub.docker.com/r/danielqsj/kafka-exporter)[![Go Report Card](https://goreportcard.com/badge/github.com/danielqsj/kafka_exporter)](https://goreportcard.com/report/github.com/danielqsj/kafka_exporter)[![Language](https://img.shields.io/badge/language-Go-red.svg)](https://github.com/danielqsj/kafka-exporter)[![GitHub release](https://img.shields.io/badge/release-1.6.0-green.svg)](https://github.com/danielqsj/kafka-exporter/releases)[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
