@@ -362,7 +362,7 @@ func (e *Exporter) collect(ch chan<- prometheus.Metric) {
 		if err != nil {
 			log.Fatal(err)
 		}
-		fmt.Printf("%#v", vars)
+		//fmt.Printf("%#v", vars)
 	
 		ch <- prometheus.MustNewConstMetric(
 			topicOldestOffset, prometheus.GaugeValue, float64(1), file.Name(),

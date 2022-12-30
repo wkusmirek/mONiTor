@@ -29,1075 +29,151 @@
   "liveNow": false,
   "panels": [
     {
-      "aliasColors": {},
-      "annotate": {
-        "enable": false
-      },
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
-      },
-      "editable": true,
-      "fill": 0,
-      "fillGradient": 0,
-      "grid": {},
+      "collapsed": true,
       "gridPos": {
-        "h": 8,
-        "w": 8,
+        "h": 1,
+        "w": 24,
         "x": 0,
         "y": 0
       },
-      "hiddenSeries": false,
-      "id": 1,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
+      "id": 19,
+      "panels": [],
+      "title": "Host",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 1
       },
-      "lines": true,
-      "linewidth": 1,
-      "loadingEditor": false,
-      "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
+      "id": 17,
+      "panels": [],
+      "title": "MinKNOW",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 2
       },
-      "percentage": false,
-      "pluginVersion": "9.3.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "resolution": 100,
-      "scale": 1,
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
+      "id": 15,
+      "panels": [],
+      "title": "FASTQ",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 3
+      },
+      "id": 13,
+      "panels": [
         {
+          "aliasColors": {},
+          "annotate": {
+            "enable": false
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
           "datasource": {
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
-          "editorMode": "builder",
-          "expr": "kafka_brokers",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
+          "editable": true,
+          "fill": 0,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 0,
+            "y": 4
+          },
+          "hiddenSeries": false,
+          "id": 1,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "loadingEditor": false,
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "9.3.2",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "resolution": 100,
+          "scale": 1,
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "P1809F7CD0C75ACF3"
+              },
+              "editorMode": "builder",
+              "expr": "count(kafka_topic_partition_oldest_offset)",
+              "legendFormat": "__auto",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeRegions": [],
+          "title": "Number of FAST5 files",
+          "tooltip": {
+            "query_as_alias": true,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "show": true
+            },
+            {
+              "format": "short",
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          },
+          "zerofill": true
         }
       ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "Active Requests",
-      "tooltip": {
-        "query_as_alias": true,
-        "shared": true,
-        "sort": 0,
-        "value_type": "cumulative"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "show": true
-        },
-        {
-          "format": "short",
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      },
-      "zerofill": true
-    },
-    {
-      "aliasColors": {},
-      "annotate": {
-        "enable": false
-      },
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "uQYoe2p4z"
-      },
-      "editable": true,
-      "fill": 0,
-      "fillGradient": 0,
-      "grid": {},
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 0
-      },
-      "hiddenSeries": false,
-      "id": 2,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "loadingEditor": false,
-      "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.3.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "resolution": 100,
-      "scale": 1,
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "A",
-          "target": "alias(puppetlabs.master.example.com.http.puppet-v3-catalog-.*.-requests.mean,'catalog')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "B",
-          "target": "alias(puppetlabs.master.example.com.http.puppet-v3-report-.*.-requests.mean,'report')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "C",
-          "target": "alias(puppetlabs.master.example.com.http.puppet-v3-node-.*.-requests.mean,'node')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "D",
-          "target": "alias(puppetlabs.master.example.com.http.puppet-v3-file_metadatas-.*.-requests.mean,'file_metadatas')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "E",
-          "target": "alias(puppetlabs.master.example.com.http.puppet-v3-file_metadata-.*.-requests.mean,'file_metadata')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "F",
-          "target": "alias(puppetlabs.master.example.com.http.puppet-v3-file_content-.*.-requests.mean,'file_content')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "G",
-          "target": "alias(puppetlabs.master.example.com.http.other-requests.mean,'other')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "H",
-          "target": "alias(puppetlabs.master.example.com.http.total-requests.mean,'all')"
-        }
-      ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "Request Durations",
-      "tooltip": {
-        "query_as_alias": true,
-        "shared": true,
-        "sort": 0,
-        "value_type": "cumulative"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "ms",
-          "show": true
-        },
-        {
-          "format": "short",
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      },
-      "zerofill": true
-    },
-    {
-      "aliasColors": {},
-      "annotate": {
-        "enable": false
-      },
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "uQYoe2p4z"
-      },
-      "editable": true,
-      "fill": 0,
-      "fillGradient": 0,
-      "grid": {},
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 0
-      },
-      "hiddenSeries": false,
-      "id": 3,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "loadingEditor": false,
-      "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": true,
-      "pluginVersion": "9.3.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "resolution": 100,
-      "scale": 1,
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "hide": false,
-          "refId": "A",
-          "target": "alias(scale(puppetlabs.master.example.com.http.puppet-v3-catalog-.*.-percentage,100),'catalog')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "B",
-          "target": "alias(scale(puppetlabs.master.example.com.http.puppet-v3-report-.*.-percentage,100),'report')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "C",
-          "target": "alias(scale(puppetlabs.master.example.com.http.puppet-v3-node-.*.-percentage,100),'node')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "D",
-          "target": "alias(scale(puppetlabs.master.example.com.http.puppet-v3-file_metadatas-.*.-percentage,100),'file_metadatas')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "E",
-          "target": "alias(scale(puppetlabs.master.example.com.http.puppet-v3-file_metadata-.*.-percentage,100),'file_metadata')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "F",
-          "target": "alias(scale(puppetlabs.master.example.com.http.puppet-v3-file_content-.*.-percentage,100),'file_content')"
-        }
-      ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "Request Ratios",
-      "tooltip": {
-        "query_as_alias": true,
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Percentage of Requests",
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": "",
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      },
-      "zerofill": true
-    },
-    {
-      "aliasColors": {
-        "create scope": "#BADFF4"
-      },
-      "annotate": {
-        "enable": false
-      },
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "uQYoe2p4z"
-      },
-      "editable": true,
-      "fill": 0,
-      "fillGradient": 0,
-      "grid": {},
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 0,
-        "y": 8
-      },
-      "hiddenSeries": false,
-      "id": 4,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "loadingEditor": false,
-      "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.3.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "resolution": 100,
-      "scale": 1,
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "A",
-          "target": "alias(puppetlabs.master.example.com.compiler.compile.mean,'compile')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "B",
-          "target": "alias(puppetlabs.master.example.com.functions.mean,'function calls')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "C",
-          "target": "alias(puppetlabs.master.example.com.compiler.find_node.mean,'find_node')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "D",
-          "target": "alias(puppetlabs.master.example.com.compiler.static_compile.mean,'static compile')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "E",
-          "target": "alias(puppetlabs.master.example.com.compiler.static_compile_postprocessing.mean,'static compile postprocessing')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "F",
-          "target": "alias(puppetlabs.master.example.com.compiler.find_facts.mean,'find_facts')"
-        }
-      ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "Compilation",
-      "tooltip": {
-        "query_as_alias": true,
-        "shared": true,
-        "sort": 0,
-        "value_type": "cumulative"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "ms",
-          "show": true
-        },
-        {
-          "format": "short",
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      },
-      "zerofill": true
-    },
-    {
-      "aliasColors": {},
-      "annotate": {
-        "enable": false
-      },
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "uQYoe2p4z"
-      },
-      "editable": true,
-      "fill": 0,
-      "fillGradient": 0,
-      "grid": {},
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 8
-      },
-      "hiddenSeries": false,
-      "id": 5,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "loadingEditor": false,
-      "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.3.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "resolution": 100,
-      "scale": 1,
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "A",
-          "target": "alias(puppetlabs.master.example.com.puppetdb.catalog.save.mean,'catalog save')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "B",
-          "target": "alias(puppetlabs.master.example.com.puppetdb.command.submit.mean,'command submit')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "C",
-          "target": "alias(puppetlabs.master.example.com.puppetdb.report.process.mean,'report process')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "D",
-          "target": "alias(puppetlabs.master.example.com.puppetdb.facts.find.mean,'facts find')"
-        }
-      ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "Communications with PuppetDB",
-      "tooltip": {
-        "query_as_alias": true,
-        "shared": true,
-        "sort": 0,
-        "value_type": "cumulative"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "ms",
-          "show": true
-        },
-        {
-          "format": "short",
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      },
-      "zerofill": true
-    },
-    {
-      "aliasColors": {},
-      "annotate": {
-        "enable": false
-      },
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "uQYoe2p4z"
-      },
-      "editable": true,
-      "fill": 0,
-      "fillGradient": 0,
-      "grid": {},
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 8
-      },
-      "hiddenSeries": false,
-      "id": 6,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "loadingEditor": false,
-      "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.3.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "resolution": 100,
-      "scale": 1,
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "A",
-          "target": "alias(puppetlabs.master.example.com.file-sync-storage.commit-timer.mean,'commit')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "B",
-          "target": "alias(puppetlabs.master.example.com.file-sync-client.clone-timer.mean,'client clone')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "C",
-          "target": "alias(puppetlabs.master.example.com.file-sync-client.fetch-timer.mean,'client fetch')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "D",
-          "target": "alias(puppetlabs.master.example.com.file-sync-client.sync-timer.mean,'client sync')"
-        }
-      ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "File Sync",
-      "tooltip": {
-        "query_as_alias": true,
-        "shared": true,
-        "sort": 0,
-        "value_type": "cumulative"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "ms",
-          "show": true
-        },
-        {
-          "format": "short",
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      },
-      "zerofill": true
-    },
-    {
-      "aliasColors": {},
-      "annotate": {
-        "enable": false
-      },
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "uQYoe2p4z"
-      },
-      "editable": true,
-      "fill": 0,
-      "fillGradient": 0,
-      "grid": {
-        "min": 0
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 0,
-        "y": 16
-      },
-      "hiddenSeries": false,
-      "id": 7,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "loadingEditor": false,
-      "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.3.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "resolution": 100,
-      "scale": 1,
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "A",
-          "target": "alias(puppetlabs.master.example.com.jruby.num-jrubies,'num jrubies')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "B",
-          "target": "alias(puppetlabs.master.example.com.jruby.num-free-jrubies,'num free jrubies')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "C",
-          "target": "alias(puppetlabs.master.example.com.jruby.free-jrubies-histo.mean,'average free jrubies')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "D",
-          "target": "alias(puppetlabs.master.example.com.jruby.requested-jrubies-histo.mean,'average requested jrubies')"
-        }
-      ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "JRubies",
-      "tooltip": {
-        "query_as_alias": true,
-        "shared": true,
-        "sort": 0,
-        "value_type": "cumulative"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "show": true
-        },
-        {
-          "format": "short",
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      },
-      "zerofill": true
-    },
-    {
-      "aliasColors": {},
-      "annotate": {
-        "enable": false
-      },
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "uQYoe2p4z"
-      },
-      "editable": true,
-      "fill": 0,
-      "fillGradient": 0,
-      "grid": {},
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 16
-      },
-      "hiddenSeries": false,
-      "id": 8,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "loadingEditor": false,
-      "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.3.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "resolution": 100,
-      "scale": 1,
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "hide": false,
-          "refId": "A",
-          "target": "alias(puppetlabs.master.example.com.jruby.borrow-timer.mean,'borrow time')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "B",
-          "target": "alias(puppetlabs.master.example.com.jruby.wait-timer.mean,'wait time')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "C",
-          "target": "alias(puppetlabs.master.example.com.jruby.lock-held-timer.mean,'lock held time')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "D",
-          "target": "alias(puppetlabs.master.example.com.jruby.lock-wait-timer.mean,'lock wait time')"
-        }
-      ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "JRuby Timers",
-      "tooltip": {
-        "query_as_alias": true,
-        "shared": true,
-        "sort": 0,
-        "value_type": "cumulative"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "ms",
-          "show": true
-        },
-        {
-          "format": "short",
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      },
-      "zerofill": true
-    },
-    {
-      "aliasColors": {},
-      "annotate": {
-        "enable": false
-      },
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "uQYoe2p4z"
-      },
-      "editable": true,
-      "fill": 0,
-      "fillGradient": 0,
-      "grid": {},
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 16
-      },
-      "hiddenSeries": false,
-      "id": 9,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "loadingEditor": false,
-      "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.3.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "resolution": 100,
-      "scale": 1,
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "A",
-          "target": "alias(puppetlabs.master.example.com.memory.heap.used,'heap used')"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "uQYoe2p4z"
-          },
-          "refId": "B",
-          "target": "alias(puppetlabs.master.example.com.memory.non-heap.used,'non-heap used')"
-        }
-      ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "Memory Usage",
-      "tooltip": {
-        "query_as_alias": true,
-        "shared": true,
-        "sort": 0,
-        "value_type": "cumulative"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "bytes",
-          "label": "",
-          "show": true
-        },
-        {
-          "format": "short",
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      },
-      "zerofill": true
+      "title": "FAST5",
+      "type": "row"
     }
   ],
   "refresh": "10s",
@@ -1145,6 +221,6 @@
   "timezone": "browser",
   "title": "master",
   "uid": "lc8de2p4k",
-  "version": 2,
+  "version": 3,
   "weekStart": ""
 }
