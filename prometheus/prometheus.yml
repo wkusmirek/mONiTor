@@ -26,15 +26,23 @@ scrape_configs:
       - targets:
         - localhost:9090
 
-  - job_name: ont-fast5-exporter
+  - job_name: fast5-exporter
     metrics_path: /metrics
     scheme: http
     static_configs:
       - targets:
         - localhost:9308
 
+  - job_name: minknow-exporter
+    metrics_path: /metrics
+    scheme: http
+    static_configs:
+      - targets:
+        - localhost:9309
+
   - job_name: node-exporter
     metrics_path: /metrics
     scheme: http
     static_configs:
-      - targets: ['localhost:9100']
+      - targets:
+        - localhost:9100
