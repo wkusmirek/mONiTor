@@ -31,6 +31,13 @@ scrape_configs:
     scheme: http
     static_configs:
       - targets:
+        - localhost:9307
+
+  - job_name: fastq-exporter
+    metrics_path: /metrics
+    scheme: http
+    static_configs:
+      - targets:
         - localhost:9308
 
   - job_name: minknow-exporter
