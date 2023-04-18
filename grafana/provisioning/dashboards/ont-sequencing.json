@@ -1212,13 +1212,13 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "fastq_amount_reads",
-          "legendFormat": "__auto",
+          "expr": "sum(fastq_amount_reads)",
+          "legendFormat": "total number of reads",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Number of reads",
+      "title": "Total number of reads",
       "type": "timeseries"
     },
     {
@@ -1303,9 +1303,9 @@
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
-          "editorMode": "builder",
-          "expr": "fastq_amount_A",
-          "legendFormat": "__auto",
+          "editorMode": "code",
+          "expr": "sum(fastq_amount_A)+sum(fastq_amount_C)+sum(fastq_amount_G)+sum(fastq_amount_T)+sum(fastq_amount_N)",
+          "legendFormat": "total number of bases",
           "range": true,
           "refId": "A"
         }
@@ -1395,9 +1395,9 @@
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
-          "editorMode": "builder",
-          "expr": "fastq_amount_A",
-          "legendFormat": "__auto",
+          "editorMode": "code",
+          "expr": "sum(fastq_amount_A)/(sum(fastq_amount_A)+sum(fastq_amount_C)+sum(fastq_amount_G)+sum(fastq_amount_T)+sum(fastq_amount_N))",
+          "legendFormat": "A",
           "range": true,
           "refId": "A"
         },
@@ -1406,10 +1406,10 @@
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
-          "editorMode": "builder",
-          "expr": "fastq_amount_C",
+          "editorMode": "code",
+          "expr": "sum(fastq_amount_C)/(sum(fastq_amount_A)+sum(fastq_amount_C)+sum(fastq_amount_G)+sum(fastq_amount_T)+sum(fastq_amount_N))",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "C",
           "range": true,
           "refId": "B"
         },
@@ -1418,10 +1418,10 @@
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
-          "editorMode": "builder",
-          "expr": "fastq_amount_G",
+          "editorMode": "code",
+          "expr": "sum(fastq_amount_G)/(sum(fastq_amount_A)+sum(fastq_amount_C)+sum(fastq_amount_G)+sum(fastq_amount_T)+sum(fastq_amount_N))",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "G",
           "range": true,
           "refId": "C"
         },
@@ -1430,10 +1430,10 @@
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
-          "editorMode": "builder",
-          "expr": "fastq_amount_T",
+          "editorMode": "code",
+          "expr": "sum(fastq_amount_T)/(sum(fastq_amount_A)+sum(fastq_amount_C)+sum(fastq_amount_G)+sum(fastq_amount_T)+sum(fastq_amount_N))",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "T",
           "range": true,
           "refId": "D"
         },
@@ -1442,10 +1442,10 @@
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
-          "editorMode": "builder",
-          "expr": "fastq_amount_N",
+          "editorMode": "code",
+          "expr": "sum(fastq_amount_N)/(sum(fastq_amount_A)+sum(fastq_amount_C)+sum(fastq_amount_G)+sum(fastq_amount_T)+sum(fastq_amount_N))",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "N",
           "range": true,
           "refId": "E"
         }
@@ -1628,13 +1628,13 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "fastq_amount_reads",
+          "expr": "fastq_amount_reads{channel=\"$channel\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Reads per channel",
+      "title": "Number of reads per channel",
       "type": "timeseries"
     },
     {
@@ -1719,14 +1719,14 @@
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
-          "editorMode": "builder",
-          "expr": "fastq_amount_A",
+          "editorMode": "code",
+          "expr": "sum(fastq_amount_A{channel=\"$channel\"})+sum(fastq_amount_C{channel=\"$channel\"})+sum(fastq_amount_G{channel=\"$channel\"})+sum(fastq_amount_T{channel=\"$channel\"})+sum(fastq_amount_N{channel=\"$channel\"})",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Bases per channel",
+      "title": "Number of bases per channel",
       "type": "timeseries"
     },
     {
@@ -1811,9 +1811,9 @@
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
-          "editorMode": "builder",
-          "expr": "fastq_amount_A",
-          "legendFormat": "__auto",
+          "editorMode": "code",
+          "expr": "sum(fastq_amount_A{channel=\"$channel\"})/(sum(fastq_amount_A{channel=\"$channel\"})+sum(fastq_amount_C{channel=\"$channel\"})+sum(fastq_amount_G{channel=\"$channel\"})+sum(fastq_amount_T{channel=\"$channel\"})+sum(fastq_amount_N{channel=\"$channel\"}))",
+          "legendFormat": "A",
           "range": true,
           "refId": "A"
         },
@@ -1822,10 +1822,10 @@
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
-          "editorMode": "builder",
-          "expr": "fastq_amount_C",
+          "editorMode": "code",
+          "expr": "sum(fastq_amount_C{channel=\"$channel\"})/(sum(fastq_amount_A{channel=\"$channel\"})+sum(fastq_amount_C{channel=\"$channel\"})+sum(fastq_amount_G{channel=\"$channel\"})+sum(fastq_amount_T{channel=\"$channel\"})+sum(fastq_amount_N{channel=\"$channel\"}))",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "C",
           "range": true,
           "refId": "B"
         },
@@ -1834,10 +1834,10 @@
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
-          "editorMode": "builder",
-          "expr": "fastq_amount_G",
+          "editorMode": "code",
+          "expr": "sum(fastq_amount_G{channel=\"$channel\"})/(sum(fastq_amount_A{channel=\"$channel\"})+sum(fastq_amount_C{channel=\"$channel\"})+sum(fastq_amount_G{channel=\"$channel\"})+sum(fastq_amount_T{channel=\"$channel\"})+sum(fastq_amount_N{channel=\"$channel\"}))",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "G",
           "range": true,
           "refId": "C"
         },
@@ -1846,10 +1846,10 @@
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
-          "editorMode": "builder",
-          "expr": "fastq_amount_T",
+          "editorMode": "code",
+          "expr": "sum(fastq_amount_T{channel=\"$channel\"})/(sum(fastq_amount_A{channel=\"$channel\"})+sum(fastq_amount_C{channel=\"$channel\"})+sum(fastq_amount_G{channel=\"$channel\"})+sum(fastq_amount_T{channel=\"$channel\"})+sum(fastq_amount_N{channel=\"$channel\"}))",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "T",
           "range": true,
           "refId": "D"
         },
@@ -1858,10 +1858,10 @@
             "type": "prometheus",
             "uid": "P1809F7CD0C75ACF3"
           },
-          "editorMode": "builder",
-          "expr": "fastq_amount_N",
+          "editorMode": "code",
+          "expr": "sum(fastq_amount_N{channel=\"$channel\"})/(sum(fastq_amount_A{channel=\"$channel\"})+sum(fastq_amount_C{channel=\"$channel\"})+sum(fastq_amount_G{channel=\"$channel\"})+sum(fastq_amount_T{channel=\"$channel\"})+sum(fastq_amount_N{channel=\"$channel\"}))",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "N",
           "range": true,
           "refId": "E"
         }
@@ -2129,11 +2129,39 @@
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "453",
+          "value": "453"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "P1809F7CD0C75ACF3"
+        },
+        "definition": "label_values(fastq_amount_reads,channel)",
+        "description": "",
+        "hide": 0,
+        "includeAll": false,
+        "label": "channel",
+        "multi": false,
+        "name": "channel",
+        "options": [],
+        "query": {
+          "query": "label_values(fastq_amount_reads,channel)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -2170,6 +2198,6 @@
   "timezone": "browser",
   "title": "master",
   "uid": "lc8de2p4k",
-  "version": 7,
+  "version": 8,
   "weekStart": ""
 }
