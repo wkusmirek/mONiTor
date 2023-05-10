@@ -3,6 +3,8 @@ services:
   minknow-exporter:
     image: "wkusmirek/minknow-exporter:latest"
     network_mode: "host"
+    volumes:
+      - /tmp:/tmp
     deploy:
       replicas: 1
       resources:
@@ -14,6 +16,8 @@ services:
   fast5-exporter:
     image: "wkusmirek/fast5-exporter:latest"
     network_mode: "host"
+    volumes:
+      - /tmp:/tmp
     deploy:
       replicas: 1
       resources:
@@ -25,6 +29,8 @@ services:
   fastq-exporter:
     image: "wkusmirek/fastq-exporter:latest"
     network_mode: "host"
+    volumes:
+      - /tmp:/tmp
     deploy:
       replicas: 1
       resources:
