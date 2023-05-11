@@ -30,8 +30,8 @@ sudo docker-compose up &
 
 
 
-
-pkill python3
-pkill node_exporter
-pkill grafana
+sudo docker-compose down
+sudo pkill python3
+sudo pkill node_exporter
+sudo pkill grafana
 
