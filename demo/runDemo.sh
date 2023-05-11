@@ -6,16 +6,32 @@ git clone https://github.com/wkusmirek/mONiToR.git
 git clone https://github.com/wkusmirek/fast5_exporter.git
 git clone https://github.com/wkusmirek/fastq_exporter.git
 git clone https://github.com/wkusmirek/minknow_exporter.git
-
-pkill python3
+git clone https://github.com/wkusmirek/Icarust.git
 
 rm -rf /tmp/fastq; mkdir /tmp/fastq
 cd ~/fastq_exporter/tests
 python3 copyFiles.py &
 
 rm -rf /tmp/fast5; mkdir /tmp/fast5
-cd ~/fast5_exporter/tests 
+cd ~/fast5_exporter/tests
 python3 copyFiles.py &
 
-cd ~/mONiToR/demo
-sudo docker-compose up
+cd ~/Icarust
+cargo run --release -- -c Profile_tomls/config.toml -v &
+
+cd ~/mONiToR/node_exporter
+sudo ./node_exporter &
+
+cd ~/mONiToR
+cp demo/docker-compose.yml .
+sudo docker-compose up &
+
+
+
+
+
+
+pkill python3
+pkill node_exporter
+pkill grafana
+
