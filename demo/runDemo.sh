@@ -16,8 +16,7 @@ rm -rf /tmp/fast5; mkdir /tmp/fast5
 cd ~/fast5_exporter/tests
 python3 copyFiles.py &
 
-cd ~/Icarust
-cargo run --release -- -c Profile_tomls/config.toml -v &
+docker run --rm -it --network host wkusmirek/icarust:latest bash -c 'cargo run --release -- -c Profile_tomls/config.toml -v'
 
 cd ~/mONiToR/node_exporter
 sudo ./node_exporter &
@@ -34,4 +33,4 @@ sudo docker-compose down
 sudo pkill python3
 sudo pkill node_exporter
 sudo pkill grafana
-
+docker stop $(docker ps -q --filter ancestor=wkusmirek/icarust:latest )
