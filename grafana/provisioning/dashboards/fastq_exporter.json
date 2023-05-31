@@ -308,7 +308,7 @@
           },
           "editorMode": "builder",
           "expr": "max(fastq_max_read)",
-          "legendFormat": "__auto",
+          "legendFormat": "longest read length",
           "range": true,
           "refId": "A"
         }
@@ -400,7 +400,7 @@
           },
           "editorMode": "code",
           "expr": "(sum(fastq_amount_A)+sum(fastq_amount_C)+sum(fastq_amount_G)+sum(fastq_amount_T)+sum(fastq_amount_N))/sum(fastq_amount_reads)",
-          "legendFormat": "__auto",
+          "legendFormat": "average read length",
           "range": true,
           "refId": "A"
         }
@@ -632,7 +632,7 @@
           },
           "editorMode": "builder",
           "expr": "fastq_total_average_quality",
-          "legendFormat": "__auto",
+          "legendFormat": "total average quality",
           "range": true,
           "refId": "A"
         }
@@ -737,7 +737,7 @@
           },
           "editorMode": "builder",
           "expr": "fastq_amount_reads{channel=\"$channel\"}",
-          "legendFormat": "__auto",
+          "legendFormat": "number of reads per channel",
           "range": true,
           "refId": "A"
         }
@@ -829,7 +829,7 @@
           },
           "editorMode": "code",
           "expr": "sum(fastq_amount_A{channel=\"$channel\"})+sum(fastq_amount_C{channel=\"$channel\"})+sum(fastq_amount_G{channel=\"$channel\"})+sum(fastq_amount_T{channel=\"$channel\"})+sum(fastq_amount_N{channel=\"$channel\"})",
-          "legendFormat": "__auto",
+          "legendFormat": "number of bases per channel",
           "range": true,
           "refId": "A"
         }
@@ -921,7 +921,7 @@
           },
           "editorMode": "builder",
           "expr": "fastq_max_read{channel=\"$channel\"}",
-          "legendFormat": "__auto",
+          "legendFormat": "longest read length per channel",
           "range": true,
           "refId": "A"
         }
@@ -1013,7 +1013,7 @@
           },
           "editorMode": "code",
           "expr": "(sum(fastq_amount_A{channel=\"$channel\"})+sum(fastq_amount_C{channel=\"$channel\"})+sum(fastq_amount_G{channel=\"$channel\"})+sum(fastq_amount_T{channel=\"$channel\"})+sum(fastq_amount_N{channel=\"$channel\"})) / sum(fastq_amount_reads{channel=\"$channel\"})",
-          "legendFormat": "__auto",
+          "legendFormat": "average read length per channel",
           "range": true,
           "refId": "A"
         }
@@ -1245,7 +1245,7 @@
           },
           "editorMode": "builder",
           "expr": "fastq_average_quality{channel=\"$channel\"}",
-          "legendFormat": "__auto",
+          "legendFormat": "average quality per channel",
           "range": true,
           "refId": "A"
         }
@@ -1317,9 +1317,10 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "304",
-          "value": "304"
+          "isNone": true,
+          "selected": true,
+          "text": "None",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
@@ -1383,6 +1384,6 @@
   "timezone": "browser",
   "title": "fastq-exporter",
   "uid": "lc8de2p4l",
-  "version": 6,
+  "version": 10,
   "weekStart": ""
 }

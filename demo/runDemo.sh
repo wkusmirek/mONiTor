@@ -1,3 +1,4 @@
+sudo pkill lighttpd
 pip3 install schedule
 
 cd ~
@@ -16,7 +17,7 @@ rm -rf /tmp/fast5; mkdir /tmp/fast5
 cd ~/fast5_exporter/tests
 python3 copyFiles.py &
 
-docker run --rm -it --network host wkusmirek/icarust:latest bash -c 'cargo run --release -- -c Profile_tomls/config.toml -v'
+docker run --rm -it --network host -d wkusmirek/icarust:latest bash -c 'cargo run --release -- -c Profile_tomls/config.toml -v'
 
 cd ~/mONiToR/node_exporter
 sudo ./node_exporter &

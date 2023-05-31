@@ -216,7 +216,7 @@
           },
           "editorMode": "builder",
           "expr": "minknow_pending_mux_change",
-          "legendFormat": "__auto",
+          "legendFormat": "pending_mux_change",
           "range": true,
           "refId": "A"
         },
@@ -228,7 +228,7 @@
           "editorMode": "builder",
           "expr": "minknow_unavailable",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "unavailable",
           "range": true,
           "refId": "B"
         },
@@ -240,7 +240,7 @@
           "editorMode": "builder",
           "expr": "minknow_inrange",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "inrange",
           "range": true,
           "refId": "C"
         },
@@ -252,7 +252,7 @@
           "editorMode": "builder",
           "expr": "minknow_above",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "above",
           "range": true,
           "refId": "D"
         },
@@ -264,7 +264,7 @@
           "editorMode": "builder",
           "expr": "minknow_strand",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "strand",
           "range": true,
           "refId": "E"
         },
@@ -276,7 +276,7 @@
           "editorMode": "builder",
           "expr": "minknow_below",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "below",
           "range": true,
           "refId": "F"
         },
@@ -288,7 +288,7 @@
           "editorMode": "builder",
           "expr": "minknow_multiple",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "multiple",
           "range": true,
           "refId": "G"
         },
@@ -300,7 +300,7 @@
           "editorMode": "builder",
           "expr": "minknow_saturated",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "saturated",
           "range": true,
           "refId": "H"
         },
@@ -312,7 +312,7 @@
           "editorMode": "builder",
           "expr": "minknow_good_single",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "good_single",
           "range": true,
           "refId": "I"
         },
@@ -324,7 +324,7 @@
           "editorMode": "builder",
           "expr": "minknow_unknown",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "unknown",
           "range": true,
           "refId": "J"
         },
@@ -336,7 +336,7 @@
           "editorMode": "builder",
           "expr": "minknow_unclassified",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "unclassified",
           "range": true,
           "refId": "K"
         },
@@ -348,7 +348,7 @@
           "editorMode": "builder",
           "expr": "minknow_unblocking",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "unblocking",
           "range": true,
           "refId": "L"
         },
@@ -360,7 +360,7 @@
           "editorMode": "builder",
           "expr": "minknow_adapter",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "adapter",
           "range": true,
           "refId": "M"
         }
@@ -452,7 +452,7 @@
           },
           "editorMode": "builder",
           "expr": "minknow_estimated_selected_bases",
-          "legendFormat": "__auto",
+          "legendFormat": "estimated_selected_bases",
           "range": true,
           "refId": "A"
         }
@@ -544,7 +544,7 @@
           },
           "editorMode": "builder",
           "expr": "sum(minknow_read_count{address=\"$address\"})",
-          "legendFormat": "__auto",
+          "legendFormat": "read_count",
           "range": true,
           "refId": "A"
         }
@@ -636,7 +636,7 @@
           },
           "editorMode": "builder",
           "expr": "minknow_basecalled_fail_bases{address=\"$address\"}",
-          "legendFormat": "__auto",
+          "legendFormat": "fail_bases",
           "range": true,
           "refId": "A"
         },
@@ -648,7 +648,7 @@
           "editorMode": "builder",
           "expr": "minknow_basecalled_pass_bases{address=\"$address\"}",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "pass_bases",
           "range": true,
           "refId": "B"
         },
@@ -748,7 +748,7 @@
           },
           "editorMode": "builder",
           "expr": "minknow_basecalled_fail_read_count{address=\"$address\"}",
-          "legendFormat": "__auto",
+          "legendFormat": "fail_read_count",
           "range": true,
           "refId": "A"
         },
@@ -760,7 +760,7 @@
           "editorMode": "builder",
           "expr": "minknow_basecalled_pass_read_count{address=\"$address\"}",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "pass_read_count",
           "range": true,
           "refId": "B"
         },
@@ -772,7 +772,7 @@
           "editorMode": "builder",
           "expr": "minknow_basecalled_skipped_read_count{address=\"$address\"}",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "skipped_read_count",
           "range": true,
           "refId": "C"
         }
@@ -864,7 +864,7 @@
           },
           "editorMode": "builder",
           "expr": "minknow_asic_temp",
-          "legendFormat": "__auto",
+          "legendFormat": "asic_temp",
           "range": true,
           "refId": "A"
         },
@@ -876,7 +876,7 @@
           "editorMode": "builder",
           "expr": "minknow_heat_sink_temp",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "heat_sink_temp",
           "range": true,
           "refId": "B"
         }
@@ -968,7 +968,7 @@
           },
           "editorMode": "builder",
           "expr": "minknow_bias_voltage",
-          "legendFormat": "__auto",
+          "legendFormat": "bias_voltage",
           "range": true,
           "refId": "A"
         }
@@ -1060,7 +1060,7 @@
           },
           "editorMode": "builder",
           "expr": "sum(minknow_alignment_coverage{address=\"$address\"})",
-          "legendFormat": "__auto",
+          "legendFormat": "coverage",
           "range": true,
           "refId": "A"
         },
@@ -1072,7 +1072,7 @@
           "editorMode": "builder",
           "expr": "sum(minknow_alignment_deletions{address=\"$address\"})",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "deletions",
           "range": true,
           "refId": "B"
         },
@@ -1084,7 +1084,7 @@
           "editorMode": "builder",
           "expr": "sum(minknow_alignment_insertions{address=\"$address\"})",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "insertions",
           "range": true,
           "refId": "C"
         },
@@ -1096,7 +1096,7 @@
           "editorMode": "builder",
           "expr": "sum(minknow_alignment_matches{address=\"$address\"})",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "matches",
           "range": true,
           "refId": "D"
         },
@@ -1108,7 +1108,7 @@
           "editorMode": "builder",
           "expr": "sum(minknow_alignment_mismatches{address=\"$address\"})",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "mismatches",
           "range": true,
           "refId": "E"
         }
@@ -1180,9 +1180,10 @@
       },
       {
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "453",
-          "value": "453"
+          "text": "None",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
@@ -1246,6 +1247,6 @@
   "timezone": "browser",
   "title": "minknow-exporter",
   "uid": "lc8de2p4k",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }

@@ -124,7 +124,7 @@
           },
           "editorMode": "builder",
           "expr": "sum(fast5_raw_data_length)",
-          "legendFormat": "__auto",
+          "legendFormat": "total raw data length",
           "range": true,
           "refId": "A"
         }
@@ -216,7 +216,7 @@
           },
           "editorMode": "builder",
           "expr": "sum(fast5_amount_reads)",
-          "legendFormat": "__auto",
+          "legendFormat": "total number of reads",
           "range": true,
           "refId": "A"
         }
@@ -308,7 +308,7 @@
           },
           "editorMode": "code",
           "expr": "sum(fast5_raw_data_length) / sum(fast5_amount_reads)",
-          "legendFormat": "__auto",
+          "legendFormat": "average raw data length",
           "range": true,
           "refId": "A"
         }
@@ -400,7 +400,7 @@
           },
           "editorMode": "builder",
           "expr": "max(fast5_max_raw_data_length)",
-          "legendFormat": "__auto",
+          "legendFormat": "max raw data length",
           "range": true,
           "refId": "A"
         }
@@ -503,7 +503,7 @@
           },
           "editorMode": "builder",
           "expr": "fast5_raw_data_length{channel=\"$channel\"}",
-          "legendFormat": "__auto",
+          "legendFormat": "raw data length per channel",
           "range": true,
           "refId": "A"
         }
@@ -595,7 +595,7 @@
           },
           "editorMode": "builder",
           "expr": "fast5_amount_reads{channel=\"$channel\"}",
-          "legendFormat": "__auto",
+          "legendFormat": "number of reads per channel",
           "range": true,
           "refId": "A"
         }
@@ -687,7 +687,7 @@
           },
           "editorMode": "code",
           "expr": "sum(fast5_raw_data_length{channel=\"$channel\"}) / sum(fast5_amount_reads{channel=\"$channel\"})",
-          "legendFormat": "__auto",
+          "legendFormat": "average raw data length per channel",
           "range": true,
           "refId": "A"
         }
@@ -779,7 +779,7 @@
           },
           "editorMode": "builder",
           "expr": "fast5_max_raw_data_length{channel=\"$channel\"}",
-          "legendFormat": "__auto",
+          "legendFormat": "max raw data length per channel",
           "range": true,
           "refId": "A"
         }
@@ -851,9 +851,10 @@
       },
       {
         "current": {
-          "selected": true,
-          "text": "132",
-          "value": "132"
+          "isNone": true,
+          "selected": false,
+          "text": "None",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
@@ -917,6 +918,6 @@
   "timezone": "browser",
   "title": "fast5-exporter",
   "uid": "lc8de2p4a",
-  "version": 3,
+  "version": 7,
   "weekStart": ""
 }
