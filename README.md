@@ -1,246 +1,167 @@
-![mONiTor](https://socialify.git.ci/wkusmirek/mONiTor/image?description=1&font=Inter&forks=1&pattern=Signal&stargazers=1&theme=Light)
-
-mONiTor
-==============
-
-[![CI](https://github.com/wkusmirek/mONiTor/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/wkusmirek/mONiTor/actions/workflows/ci.yml)[![Docker Pulls](https://img.shields.io/docker/pulls/wkusmirek/mONiTor.svg)](https://hub.docker.com/r/wkusmirek/mONiTor)[![Go Report Card](https://goreportcard.com/badge/github.com/wkusmirek/kafka_exporter)](https://goreportcard.com/report/github.com/wkusmirek/kafka_exporter)[![Language](https://img.shields.io/badge/language-Go-red.svg)](https://github.com/wkusmirek/mONiTor)[![GitHub release](https://img.shields.io/badge/release-1.6.0-green.svg)](https://github.com/wkusmirek/mONiTor/releases)[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
-
-Kafka exporter for Prometheus. For other metrics from Kafka, have a look at the [JMX exporter](https://github.com/prometheus/jmx_exporter).
-
-Table of Contents
------------------
-
--	[Compatibility](#compatibility)
--	[Dependency](#dependency)
--	[Download](#download)
--	[Compile](#compile)
-	-	[Build Binary](#build-binary)
-	-	[Build Docker Image](#build-docker-image)
--	[Run](#run)
-	-	[Run Binary](#run-binary)
-	-	[Run Docker Image](#run-docker-image)
--	[Flags](#flags)
-    -	[Notes](#notes)
--	[Metrics](#metrics)
-	-	[Brokers](#brokers)
-	-	[Topics](#topics)
-	-	[Consumer Groups](#consumer-groups)
--	[Grafana Dashboard](#grafana-dashboard)
--   [License](#license)
-
-Compatibility
--------------
-
-Support [Apache Kafka](https://kafka.apache.org) version 0.10.1.0 (and later).
-
-Dependency
-----------
-
--	[Golang](https://golang.org)
--	[Prometheus](https://prometheus.io)
--	[Grafana](https://grafana.com)
-
-Download
---------
-
-Binary can be downloaded from [Releases](https://github.com/wkusmirek/mONiTor/releases) page.
-
-Compile
--------
-
-### Build Binary
-
-```shell
-make
-```
-
-### Build Docker Image
-
-```shell
-make docker
-```
-
-Docker Hub Image
-----------------
-
-```shell
-docker pull wkusmirek/mONiTor:latest
-```
-
-It can be used directly instead of having to build the image yourself. ([Docker Hub wkusmirek/mONiTor](https://hub.docker.com/r/wkusmirek/mONiTor)\)
-
-Run
----
-
-### Run Binary
-
-```shell
-kafka_exporter --kafka.server=kafka:9092 [--kafka.server=another-server ...]
-```
-
-### Run Docker Image
-
-```
-docker run -ti --rm -p 9308:9308 wkusmirek/mONiTor --kafka.server=kafka:9092 [--kafka.server=another-server ...]
-```
-
-Flags
------
-
-This image is configurable using different flags
-
-| Flag name                    | Default        | Description                                                                                                                            |
-|------------------------------|----------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| kafka.server                 | kafka:9092     | Addresses (host:port) of Kafka server                                                                                                  |
-| kafka.version                | 2.0.0          | Kafka broker version                                                                                                                   |
-| sasl.enabled                 | false          | Connect using SASL/PLAIN                                                                                                               |
-| sasl.handshake               | true           | Only set this to false if using a non-Kafka SASL proxy                                                                                 |
-| sasl.username                |                | SASL user name                                                                                                                         |
-| sasl.password                |                | SASL user password                                                                                                                     |
-| sasl.mechanism               |                | SASL mechanism can be plain, scram-sha512, scram-sha256                                                                                |
-| sasl.service-name            |                | Service name when using Kerberos Auth                                                                                                  |
-| sasl.kerberos-config-path    |                | Kerberos config path                                                                                                                   |
-| sasl.realm                   |                | Kerberos realm                                                                                                                         |
-| sasl.keytab-path             |                | Kerberos keytab file path                                                                                                              |
-| sasl.kerberos-auth-type      |                | Kerberos auth type. Either 'keytabAuth' or 'userAuth'                                                                                  |
-| tls.enabled                  | false          | Connect to Kafka using TLS                                                                                                                      |
-| tls.server-name                  |                | Used to verify the hostname on the returned certificates unless tls.insecure-skip-tls-verify is given. The kafka server's name should be given                                                                  |
-| tls.ca-file                  |                | The optional certificate authority file for Kafka TLS client authentication                                                                  |
-| tls.cert-file                |                | The optional certificate file for Kafka client authentication                                                                                |
-| tls.key-file                 |                | The optional key file for Kafka client authentication                                                                                        |
-| tls.insecure-skip-tls-verify | false          | If true, the server's certificate will not be checked for validity                                                                     |
-| server.tls.enabled                  | false          | Enable TLS for web server                                                                                                                      |
-| server.tls.mutual-auth-enabled                  | false          | Enable TLS client mutual authentication                                                                                                                      |
-| server.tls.ca-file                |                | The certificate authority file for the web server                                                                                |
-| server.tls.cert-file                |                | The certificate file for the web server                                                                                |
-| server.tls.key-file                 |                | The key file for the web server                                                                                        |
-| topic.filter                 | .*             | Regex that determines which topics to collect                                                                                          |
-| group.filter                 | .*             | Regex that determines which consumer groups to collect                                                                                 |
-| web.listen-address           | :9308          | Address to listen on for web interface and telemetry                                                                                   |
-| web.telemetry-path           | /metrics       | Path under which to expose metrics                                                                                                     |
-| log.enable-sarama            | false          | Turn on Sarama logging                                                                                                                 |
-| use.consumelag.zookeeper     | false          | if you need to use a group from zookeeper                                                                                              |
-| zookeeper.server             | localhost:2181 | Address (hosts) of zookeeper server                                                                                                    |
-| kafka.labels                 |                | Kafka cluster name                                                                                                                     |
-| refresh.metadata             | 30s            | Metadata refresh interval                                                                                                              |
-| offset.show-all              | true           | Whether show the offset/lag for all consumer group, otherwise, only show connected consumer groups                                     |
-| concurrent.enable            | false          | If true, all scrapes will trigger kafka operations otherwise, they will share results. WARN: This should be disabled on large clusters |
-| topic.workers                | 100            | Number of topic workers                                                                                                                |
-| verbosity                    | 0              | Verbosity log level                                                                                                                    |
+<!-- Improved compatibility of back to top link: See: https://github.com/wkusmirek/mONiTor/pull/73 -->
+<a name="readme-top"></a>
+<!--
+*** Thanks for checking out the mONiTor. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Don't forget to give the project a star!
+*** Thanks again! Now go create something AMAZING! :D
+-->
 
 
-### Notes
 
-Boolean values are uniquely managed by [Kingpin](https://github.com/alecthomas/kingpin/blob/master/README.md#boolean-values). Each boolean flag will have a negative complement:
-`--<name>` and `--no-<name>`.
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
 
-For example:
 
-If you need to disable `sasl.handshake`, you could add flag `--no-sasl.handshake`
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <h3 align="center">mONiTor</h3>
 
-Metrics
--------
+  <p align="center">
+    An awesome README template to jumpstart your projects!
+    <br />
+    <a href="https://eve.ii.pw.edu.pl:9007/dashboards">View Demo</a>
+    ·
+    <a href="https://github.com/wkusmirek/mONiTor/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/wkusmirek/mONiTor/issues">Request Feature</a>
+  </p>
+</div>
 
-Documents about exposed Prometheus metrics.
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-For details on the underlying metrics please see [Apache Kafka](https://kafka.apache.org/documentation).
+Nanopore sequencing is the fourth-generation DNA sequencing technology and the significant advantages of nanopores include ultralong reads, low material requirement, and high throughput. Along with the development of the nanopore technology itself, open-source tools supporting work with the sequencers should also be developed.
 
-### Brokers
+Herein, we presented mONiTor - the new system for monitoring the nanopore sequencing process. The tool monitors the metrics available in the sequencer, the state of the computer to which the sequencer is connected, and the contents of the fast5 and fastq files. The metrics are stored in the Prometheus database and presented in interactive diagrams using the Grafana software. Thanks to the technologies used, the user can easily log in and view the sequencing status (current and archived). In addition, after appropriate configuration, the user can be informed by e-mail about exceeding the limit, e.g. 90% disk memory occupancy or abnormal state of pores in the sequencer, etc.
 
-**Metrics details**
+Source code and documentation are available at https://github.com/wkusmirek/mONiTor, an example server is available at https://eve.ii.pw.edu.pl:9007 with the username equals to _test_ and the password equals also to _test_.
 
-| Name            | Exposed informations                   |
-| --------------- | -------------------------------------- |
-| `kafka_brokers` | Number of Brokers in the Kafka Cluster |
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-**Metrics output example**
 
-```txt
-# HELP kafka_brokers Number of Brokers in the Kafka Cluster.
-# TYPE kafka_brokers gauge
-kafka_brokers 3
-```
+<!-- GETTING STARTED -->
+## Getting Started
 
-### Topics
+In order to install and run the mONiTor system, you do not need to install any components other than Docker.
 
-**Metrics details**
+### Installation and Usage
 
-| Name                                               | Exposed informations                                |
-| -------------------------------------------------- | --------------------------------------------------- |
-| `kafka_topic_partitions`                           | Number of partitions for this Topic                 |
-| `kafka_topic_partition_current_offset`             | Current Offset of a Broker at Topic/Partition       |
-| `kafka_topic_partition_oldest_offset`              | Oldest Offset of a Broker at Topic/Partition        |
-| `kafka_topic_partition_in_sync_replica`            | Number of In-Sync Replicas for this Topic/Partition |
-| `kafka_topic_partition_leader`                     | Leader Broker ID of this Topic/Partition            |
-| `kafka_topic_partition_leader_is_preferred`        | 1 if Topic/Partition is using the Preferred Broker  |
-| `kafka_topic_partition_replicas`                   | Number of Replicas for this Topic/Partition         |
-| `kafka_topic_partition_under_replicated_partition` | 1 if Topic/Partition is under Replicated            |
+1. Clone the repo:
+   ```sh
+   git clone https://github.com/wkusmirek/mONiTor.git
+   ```
+2. Enter to main dir:
+   ```sh
+   cd mONiToR
+   ```
+3. Run the mONiTor system:
+   ```js
+   docker-compose up
+   ```
+4. Open web browser and go to:
+   ```sh
+   localhost:3000
+   ```
+5. Default admin user is:
+   ```sh
+   username: admin
+   password: admin
+   ```
 
-**Metrics output example**
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-```txt
-# HELP kafka_topic_partitions Number of partitions for this Topic
-# TYPE kafka_topic_partitions gauge
-kafka_topic_partitions{topic="__consumer_offsets"} 50
+<!-- CONTRIBUTING -->
+## Contributing
 
-# HELP kafka_topic_partition_current_offset Current Offset of a Broker at Topic/Partition
-# TYPE kafka_topic_partition_current_offset gauge
-kafka_topic_partition_current_offset{partition="0",topic="__consumer_offsets"} 0
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-# HELP kafka_topic_partition_oldest_offset Oldest Offset of a Broker at Topic/Partition
-# TYPE kafka_topic_partition_oldest_offset gauge
-kafka_topic_partition_oldest_offset{partition="0",topic="__consumer_offsets"} 0
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
 
-# HELP kafka_topic_partition_in_sync_replica Number of In-Sync Replicas for this Topic/Partition
-# TYPE kafka_topic_partition_in_sync_replica gauge
-kafka_topic_partition_in_sync_replica{partition="0",topic="__consumer_offsets"} 3
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-# HELP kafka_topic_partition_leader Leader Broker ID of this Topic/Partition
-# TYPE kafka_topic_partition_leader gauge
-kafka_topic_partition_leader{partition="0",topic="__consumer_offsets"} 0
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-# HELP kafka_topic_partition_leader_is_preferred 1 if Topic/Partition is using the Preferred Broker
-# TYPE kafka_topic_partition_leader_is_preferred gauge
-kafka_topic_partition_leader_is_preferred{partition="0",topic="__consumer_offsets"} 1
+<!-- LICENSE -->
+## License
 
-# HELP kafka_topic_partition_replicas Number of Replicas for this Topic/Partition
-# TYPE kafka_topic_partition_replicas gauge
-kafka_topic_partition_replicas{partition="0",topic="__consumer_offsets"} 3
+Distributed under the Apache License Version 2.0. See `LICENSE` file for more information.
 
-# HELP kafka_topic_partition_under_replicated_partition 1 if Topic/Partition is under Replicated
-# TYPE kafka_topic_partition_under_replicated_partition gauge
-kafka_topic_partition_under_replicated_partition{partition="0",topic="__consumer_offsets"} 0
-```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Consumer Groups
 
-**Metrics details**
 
-| Name                                 | Exposed informations                                          |
-| ------------------------------------ | ------------------------------------------------------------- |
-| `kafka_consumergroup_current_offset` | Current Offset of a ConsumerGroup at Topic/Partition          |
-| `kafka_consumergroup_lag`            | Current Approximate Lag of a ConsumerGroup at Topic/Partition |
+<!-- CONTACT -->
+## Contact
 
-**Metrics output example**
+Wiktor Kuśmirek - wiktor.kusmirek@pw.edu.pl
 
-```txt
-# HELP kafka_consumergroup_current_offset Current Offset of a ConsumerGroup at Topic/Partition
-# TYPE kafka_consumergroup_current_offset gauge
-kafka_consumergroup_current_offset{consumergroup="KMOffsetCache-kafka-manager-3806276532-ml44w",partition="0",topic="__consumer_offsets"} -1
+Project Link: [https://github.com/wkusmirek/mONiTor](https://github.com/wkusmirek/mONiTor)
 
-# HELP kafka_consumergroup_lag Current Approximate Lag of a ConsumerGroup at Topic/Partition
-# TYPE kafka_consumergroup_lag gauge
-kafka_consumergroup_lag{consumergroup="KMOffsetCache-kafka-manager-3806276532-ml44w",partition="0",topic="__consumer_offsets"} 1
-```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Grafana Dashboard
--------
 
-Grafana Dashboard ID: 7589, name: Kafka Exporter Overview.
 
-For details of the dashboard please see [Kafka Exporter Overview](https://grafana.com/dashboards/7589).
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
 
-License
--------
+* [node-exporter](https://github.com/wkusmirek/node_exporter)
+* [fast5-exporter](https://github.com/wkusmirek/fast5_exporter)
+* [fastq-exporter](https://github.com/wkusmirek/fastq_exporter)
+* [minknow-exporter](https://github.com/wkusmirek/minknow_exporter)
+* [Prometheus](https://prometheus.io/)
+* [Grafana](https://grafana.com/)
 
-Code is licensed under the [Apache License 2.0](https://github.com/wkusmirek/mONiToR/blob/master/LICENSE).
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/wkusmirek/mONiTor.svg?style=for-the-badge
+[contributors-url]: https://github.com/wkusmirek/mONiTor/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/wkusmirek/mONiTor.svg?style=for-the-badge
+[forks-url]: https://github.com/wkusmirek/mONiTor/network/members
+[stars-shield]: https://img.shields.io/github/stars/wkusmirek/mONiTor.svg?style=for-the-badge
+[stars-url]: https://github.com/wkusmirek/mONiTor/stargazers
+[issues-shield]: https://img.shields.io/github/issues/wkusmirek/mONiTor.svg?style=for-the-badge
+[issues-url]: https://github.com/wkusmirek/mONiTor/issues
+[license-shield]: https://img.shields.io/github/license/wkusmirek/mONiTor.svg?style=for-the-badge
+[license-url]: https://github.com/wkusmirek/mONiTor/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/wkusmirek
+[product-screenshot]: images/screenshot.png
+[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Next-url]: https://nextjs.org/
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
+[Vue-url]: https://vuejs.org/
+[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
+[Angular-url]: https://angular.io/
+[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
+[Svelte-url]: https://svelte.dev/
+[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
+[Laravel-url]: https://laravel.com
+[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[Bootstrap-url]: https://getbootstrap.com
+[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
+[JQuery-url]: https://jquery.com 
