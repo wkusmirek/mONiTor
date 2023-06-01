@@ -31,7 +31,7 @@
   <h3 align="center">mONiTor</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    Real-time monitoring of Oxford Nanopore Technology sequencing run
     <br />
     <a href="https://eve.ii.pw.edu.pl:9007/dashboards">View Demo</a>
     ·
