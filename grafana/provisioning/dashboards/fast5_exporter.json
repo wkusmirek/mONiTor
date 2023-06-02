@@ -648,8 +648,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -740,8 +739,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -797,57 +795,47 @@
       {
         "current": {
           "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "text": "localhost:9502",
+          "value": "localhost:9502"
         },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "P1809F7CD0C75ACF3"
-        },
-        "definition": "label_values(minknow_flowcell_info,address)",
         "hide": 0,
-        "includeAll": true,
+        "includeAll": false,
         "label": "address",
         "multi": false,
         "name": "address",
-        "options": [],
-        "query": {
-          "query": "label_values(minknow_flowcell_info,address)",
-          "refId": "StandardVariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
+        "options": [
+          {
+            "selected": true,
+            "text": "localhost:9502",
+            "value": "localhost:9502"
+          }
+        ],
+        "query": "localhost:9502",
         "skipUrlSync": false,
-        "sort": 0,
-        "type": "query"
+        "type": "custom"
       },
       {
-        "allValue": "",
         "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "selected": true,
+          "text": "Bantersaurus",
+          "value": "Bantersaurus"
         },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "P1809F7CD0C75ACF3"
-        },
-        "definition": "label_values(minknow_flowcell_info,name)",
         "hide": 0,
-        "includeAll": true,
+        "includeAll": false,
         "label": "flowcell",
         "multi": false,
         "name": "flowcell",
-        "options": [],
-        "query": {
-          "query": "label_values(minknow_flowcell_info,name)",
-          "refId": "StandardVariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
+        "options": [
+          {
+            "selected": true,
+            "text": "Bantersaurus",
+            "value": "Bantersaurus"
+          }
+        ],
+        "query": "Bantersaurus",
+        "queryValue": "",
         "skipUrlSync": false,
-        "sort": 0,
-        "type": "query"
+        "type": "custom"
       },
       {
         "current": {
@@ -918,6 +906,6 @@
   "timezone": "browser",
   "title": "fast5-exporter",
   "uid": "lc8de2p4a",
-  "version": 7,
+  "version": 1,
   "weekStart": ""
 }
