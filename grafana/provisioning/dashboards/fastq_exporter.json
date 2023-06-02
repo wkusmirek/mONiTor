@@ -1302,7 +1302,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "420",
           "value": "420"
         },
@@ -1325,7 +1325,7 @@
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
-        "sort": 0,
+        "sort": 3,
         "type": "query"
       }
     ]
@@ -1368,6 +1368,6 @@
   "timezone": "browser",
   "title": "fastq-exporter",
   "uid": "lc8de2p4l",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
