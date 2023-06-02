@@ -789,7 +789,9 @@
   "refresh": "10s",
   "schemaVersion": 37,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "mONiTor"
+  ],
   "templating": {
     "list": [
       {
@@ -906,6 +908,6 @@
   "timezone": "browser",
   "title": "fast5-exporter",
   "uid": "lc8de2p4a",
-  "version": 2,
+  "version": 3,
   "weekStart": ""
 }

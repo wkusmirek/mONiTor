@@ -1037,8 +1037,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1317,8 +1316,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1834,8 +1832,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -2304,8 +2301,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -23005,6 +23001,7 @@
   "schemaVersion": 37,
   "style": "dark",
   "tags": [
+    "mONiTor"
   ],
   "templating": {
     "list": [
@@ -23028,9 +23025,10 @@
       },
       {
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "node-exporter",
-          "value": "node-exporter"
+          "text": "None",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
@@ -23058,9 +23056,10 @@
       },
       {
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "localhost:9100",
-          "value": "localhost:9100"
+          "text": "None",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
@@ -23141,6 +23140,6 @@
   "timezone": "browser",
   "title": "node-exporter",
   "uid": "rYdddlPWk",
-  "version": 2,
+  "version": 1,
   "weekStart": ""
 }

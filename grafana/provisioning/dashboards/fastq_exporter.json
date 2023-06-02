@@ -1251,7 +1251,9 @@
   "refresh": "10s",
   "schemaVersion": 37,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "mONiTor"
+  ],
   "templating": {
     "list": [
       {
@@ -1302,7 +1304,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "420",
           "value": "420"
         },
@@ -1368,6 +1370,6 @@
   "timezone": "browser",
   "title": "fastq-exporter",
   "uid": "lc8de2p4l",
-  "version": 2,
+  "version": 3,
   "weekStart": ""
 }

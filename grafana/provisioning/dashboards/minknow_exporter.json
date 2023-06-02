@@ -825,8 +825,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -929,8 +928,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1021,8 +1019,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1150,8 +1147,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1201,7 +1197,9 @@
   "refresh": "10s",
   "schemaVersion": 37,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "mONiTor"
+  ],
   "templating": {
     "list": [
       {
@@ -1290,6 +1288,6 @@
   "timezone": "browser",
   "title": "minknow-exporter",
   "uid": "lc8de2p4k",
-  "version": 3,
+  "version": 4,
   "weekStart": ""
 }
