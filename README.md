@@ -33,7 +33,7 @@
   <p align="center">
     Real-time monitoring of Oxford Nanopore Technology sequencing run
     <br />
-    <a href="https://eve.ii.pw.edu.pl:9007/dashboards">View Demo</a>
+    <a href="http://eve.ii.pw.edu.pl:9007/dashboards">View Demo</a>
     ·
     <a href="https://github.com/wkusmirek/mONiTor/issues">Report Bug</a>
     ·
@@ -48,7 +48,7 @@ Nanopore sequencing is the fourth-generation DNA sequencing technology and the s
 
 Herein, we presented mONiTor - the new system for monitoring the nanopore sequencing process. The tool monitors the metrics available in the sequencer, the state of the computer to which the sequencer is connected, and the contents of the fast5 and fastq files. The metrics are stored in the Prometheus database and presented in interactive diagrams using the Grafana software. Thanks to the technologies used, the user can easily log in and view the sequencing status (current and archived). In addition, after appropriate configuration, the user can be informed by e-mail about exceeding the limit, e.g. 90% disk memory occupancy or abnormal state of pores in the sequencer, etc.
 
-Source code and documentation are available at https://github.com/wkusmirek/mONiTor, an example server is available at https://eve.ii.pw.edu.pl:9007 with the username equals to _test_ and the password equals also to _test_.
+Source code and documentation are available at https://github.com/wkusmirek/mONiTor, an example server is available at http://eve.ii.pw.edu.pl:9007/dashboards with the username equals to _test_ and the password equals also to _test_.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
