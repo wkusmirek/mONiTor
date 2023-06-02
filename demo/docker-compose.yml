@@ -61,6 +61,7 @@ services:
     volumes:
       - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
       - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/data:/var/lib/grafana
     deploy:
       replicas: 1
       resources:
