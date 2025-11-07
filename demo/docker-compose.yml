@@ -1,10 +1,39 @@
 version: "3.3"
 services:
-  minknow-exporter:
+  minknow-exporter-1:
     image: "wkusmirek/minknow-exporter:latest"
     network_mode: "host"
     volumes:
       - /tmp:/tmp
+    command: ["--web.listen-address", ":9309", "--host", "localhost", "--port", "9502", "--overriddedHost", "10.153.12.161", "--overriddedPort", "9502"]
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+      restart_policy:
+        condition: on-failure
+  minknow-exporter-2:
+    image: "wkusmirek/minknow-exporter:latest"
+    network_mode: "host"
+    volumes:
+      - /tmp:/tmp
+    command: ["--web.listen-address", ":9310", "--host", "localhost", "--port", "9502", "--overriddedHost", "10.153.12.162", "--overriddedPort", "9502"]
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+      restart_policy:
+        condition: on-failure
+  minknow-exporter-3:
+    image: "wkusmirek/minknow-exporter:latest"
+    network_mode: "host"
+    volumes:
+      - /tmp:/tmp
+    command: ["--web.listen-address", ":9311", "--host", "localhost", "--port", "9502", "--overriddedHost", "10.153.12.163", "--overriddedPort", "9502"]
     deploy:
       replicas: 1
       resources:
@@ -54,14 +83,14 @@ services:
         condition: on-failure
   grafana:
     image: "grafana/grafana:latest"
-    user: root
-    environment:
-      - GF_SERVER_HTTP_PORT=80
+#    user: root
+#    environment:
+#      - GF_SERVER_HTTP_PORT=80
     network_mode: "host"    
     volumes:
-      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
-      - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
-      - ./grafana/data:/var/lib/grafana
+      - ../grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ../grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ../grafana/data:/var/lib/grafana
     deploy:
       replicas: 1
       resources:

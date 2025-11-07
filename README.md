@@ -44,7 +44,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Nanopore sequencing is the fourth-generation DNA sequencing technology and the significant advantages of nanopores include ultralong reads, low material requirement, and high throughput. Along with the development of the nanopore technology itself, open-source tools supporting work with the sequencers should also be developed.
+Nanopore sequencing is the third-generation DNA sequencing technology and the significant advantages of nanopores include ultralong reads, low material requirement, and high throughput. Along with the development of the nanopore technology itself, open-source tools supporting work with the sequencers should also be developed.
 
 Herein, we presented mONiTor - the new system for monitoring the nanopore sequencing process. The tool monitors the metrics available in the sequencer, the state of the computer to which the sequencer is connected, and the contents of the fast5 and fastq files. The metrics are stored in the Prometheus database and presented in interactive diagrams using the Grafana software. Thanks to the technologies used, the user can easily log in and view the sequencing status (current and archived). In addition, after appropriate configuration, the user can be informed by e-mail about exceeding the limit, e.g. 90% disk memory occupancy or abnormal state of pores in the sequencer, etc.
 
@@ -123,10 +123,6 @@ Project Link: [https://github.com/wkusmirek/mONiTor](https://github.com/wkusmire
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [node-exporter](https://github.com/wkusmirek/node_exporter)
-* [fast5-exporter](https://github.com/wkusmirek/fast5_exporter)
-* [fastq-exporter](https://github.com/wkusmirek/fastq_exporter)
-* [minknow-exporter](https://github.com/wkusmirek/minknow_exporter)
 * [Prometheus](https://prometheus.io/)
 * [Grafana](https://grafana.com/)
 
