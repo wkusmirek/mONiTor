@@ -19,7 +19,7 @@ services:
     network_mode: "host"
     volumes:
       - /tmp:/tmp
-    command: ["--web.listen-address", ":9310", "--host", "localhost", "--port", "9502", "--overriddedHost", "10.153.12.162", "--overriddedPort", "9502"]
+    command: ["--web.listen-address", ":9310", "--host", "localhost", "--port", "9503", "--overriddedHost", "10.153.12.162", "--overriddedPort", "9502"]
     deploy:
       replicas: 1
       resources:
@@ -33,7 +33,7 @@ services:
     network_mode: "host"
     volumes:
       - /tmp:/tmp
-    command: ["--web.listen-address", ":9311", "--host", "localhost", "--port", "9502", "--overriddedHost", "10.153.12.163", "--overriddedPort", "9502"]
+    command: ["--web.listen-address", ":9311", "--host", "localhost", "--port", "9504", "--overriddedHost", "10.153.12.162", "--overriddedPort", "9502"]
     deploy:
       replicas: 1
       resources:

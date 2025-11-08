@@ -18,13 +18,15 @@ cd ~/fast5_exporter/tests
 python3 copyFiles.py &
 
 docker run --rm -it --network host -d wkusmirek/icarust:latest bash -c 'cargo run --release -- -c Profile_tomls/config_MN45789.toml -v'
+docker run --rm -it --network host -d wkusmirek/icarust:latest bash -c 'cargo run --release -- -c Profile_tomls/config_MN83011.toml -v'
 
 cd ~/mONiToR/node_exporter
 sudo ./node_exporter &
 
 cd ~/mONiToR
 cp demo/docker-compose.yml .
-sudo docker-compose up &
+sudo docker-compose -f demo/docker-compose.yml up &
+#sudo docker-compose up &
 
 
 
