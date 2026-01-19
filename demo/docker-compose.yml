@@ -47,6 +47,7 @@ services:
     network_mode: "host"
     volumes:
       - /tmp:/tmp
+    command: ["--host", "localhost", "--port", "1111", "--path", "/tmp/fast5", "--overriddedHost", "10.153.12.161", "--overriddedPort", "5555", "--overriddedPath", "/data/ont/fast5"]
     deploy:
       replicas: 1
       resources:
@@ -60,6 +61,7 @@ services:
     network_mode: "host"
     volumes:
       - /tmp:/tmp
+    command: ["--host", "localhost", "--port", "1111", "--path", "/tmp/fastq", "--overriddedHost", "10.153.12.161", "--overriddedPort", "5555", "--overriddedPath", "/data/ont/fastq"]
     deploy:
       replicas: 1
       resources:

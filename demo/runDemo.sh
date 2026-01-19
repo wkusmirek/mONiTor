@@ -24,9 +24,7 @@ cd ~/mONiToR/node_exporter
 sudo ./node_exporter &
 
 cd ~/mONiToR
-cp demo/docker-compose.yml .
 sudo docker-compose -f demo/docker-compose.yml up &
-#sudo docker-compose up &
 
 
 
