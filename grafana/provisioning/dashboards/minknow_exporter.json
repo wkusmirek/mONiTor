@@ -28,19 +28,6 @@
   "links": [],
   "panels": [
     {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 0
-      },
-      "id": 17,
-      "panels": [],
-      "title": "MinKNOW",
-      "type": "row"
-    },
-    {
       "datasource": {
         "type": "prometheus",
         "uid": "P1809F7CD0C75ACF3"
@@ -48,41 +35,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "showValues": false,
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
+            "mode": "thresholds"
           },
           "mappings": [],
           "thresholds": {
@@ -105,16 +58,214 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 1
+        "y": 0
+      },
+      "id": 42,
+      "options": {
+        "inlineEditing": true,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            }
+          },
+          "border": {
+            "color": {
+              "fixed": "dark-green"
+            }
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "fixed": "#D9D9D9"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "size": 20,
+                "text": {
+                  "field": "",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "connections": [
+                {
+                  "color": {
+                    "fixed": "rgb(204, 204, 220)"
+                  },
+                  "path": "straight",
+                  "size": {
+                    "fixed": 2,
+                    "max": 10,
+                    "min": 1
+                  },
+                  "source": {
+                    "x": 1,
+                    "y": 0
+                  },
+                  "sourceOriginal": {
+                    "x": 360,
+                    "y": 125
+                  },
+                  "target": {
+                    "x": -0.40540540540540543,
+                    "y": 0.2953929539295393
+                  },
+                  "targetOriginal": {
+                    "x": 352,
+                    "y": 130
+                  }
+                }
+              ],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 1",
+              "placement": {
+                "height": 50,
+                "left": 100,
+                "rotation": 0,
+                "top": 100,
+                "width": 260
+              },
+              "type": "metric-value"
+            }
+          ],
+          "name": "Element 1772782173580",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true,
+        "tooltip": {
+          "disableForOneClick": false,
+          "mode": "single"
+        },
+        "zoomToContent": false
+      },
+      "pluginVersion": "12.2.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "builder",
+          "exemplar": false,
+          "expr": "minknow_state{address=\"$address\", name=\"$deviceId\"}",
+          "format": "table",
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "New panel",
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {
+            "keepLabels": [
+              "channel",
+              "address",
+              "name",
+              "state"
+            ],
+            "mode": "columns"
+          }
+        }
+      ],
+      "type": "canvas"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 8
+      },
+      "id": 17,
+      "panels": [],
+      "title": "MinKNOW",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P1809F7CD0C75ACF3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisPlacement": "auto",
+            "fillOpacity": 70,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 9
       },
       "id": 19,
       "options": {
+        "colWidth": 0.9,
         "legend": {
-          "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": true
         },
+        "rowHeight": 0.9,
+        "showValue": "auto",
         "tooltip": {
           "hideZeros": false,
           "mode": "single",
@@ -129,14 +280,14 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "count by(state) (minknow_flowcell_info{address=\"$address\", name=\"$flowcell\"})",
+          "expr": "count by(state) (minknow_state{address=\"$address\", name=\"$deviceId\"})",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
       "title": "Flow cell state",
-      "type": "timeseries"
+      "type": "status-history"
     },
     {
       "datasource": {
@@ -203,15 +354,15 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 1
+        "y": 9
       },
       "id": 33,
       "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
+          "displayMode": "hidden",
+          "placement": "right",
+          "showLegend": false
         },
         "tooltip": {
           "hideZeros": false,
@@ -227,7 +378,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_pending_mux_change",
+          "expr": "minknow_pending_mux_change{address=\"$address\", name=\"$deviceId\"}",
           "legendFormat": "pending_mux_change",
           "range": true,
           "refId": "A"
@@ -238,7 +389,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_unavailable",
+          "expr": "minknow_unavailable{address=\"$address\", name=\"$deviceId\"}",
           "hide": false,
           "legendFormat": "unavailable",
           "range": true,
@@ -250,7 +401,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_inrange",
+          "expr": "minknow_inrange{address=\"$address\", name=\"$deviceId\"}",
           "hide": false,
           "legendFormat": "inrange",
           "range": true,
@@ -262,7 +413,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_above",
+          "expr": "minknow_above{address=\"$address\", name=\"$deviceId\"}",
           "hide": false,
           "legendFormat": "above",
           "range": true,
@@ -274,7 +425,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_strand",
+          "expr": "minknow_strand{address=\"$address\", name=\"$deviceId\"}",
           "hide": false,
           "legendFormat": "strand",
           "range": true,
@@ -286,7 +437,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_below",
+          "expr": "minknow_below{address=\"$address\", name=\"$deviceId\"}",
           "hide": false,
           "legendFormat": "below",
           "range": true,
@@ -298,7 +449,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_multiple",
+          "expr": "minknow_multiple{address=\"$address\", name=\"$deviceId\"}",
           "hide": false,
           "legendFormat": "multiple",
           "range": true,
@@ -310,7 +461,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_saturated",
+          "expr": "minknow_saturated{address=\"$address\", name=\"$deviceId\"}",
           "hide": false,
           "legendFormat": "saturated",
           "range": true,
@@ -322,7 +473,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_good_single",
+          "expr": "minknow_good_single{address=\"$address\", name=\"$deviceId\"}",
           "hide": false,
           "legendFormat": "good_single",
           "range": true,
@@ -334,7 +485,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_unknown",
+          "expr": "minknow_unknown{address=\"$address\", name=\"$deviceId\"}",
           "hide": false,
           "legendFormat": "unknown",
           "range": true,
@@ -346,7 +497,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_unclassified",
+          "expr": "minknow_unclassified{address=\"$address\", name=\"$deviceId\"}",
           "hide": false,
           "legendFormat": "unclassified",
           "range": true,
@@ -358,7 +509,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_unblocking",
+          "expr": "minknow_unblocking{address=\"$address\", name=\"$deviceId\"}",
           "hide": false,
           "legendFormat": "unblocking",
           "range": true,
@@ -370,7 +521,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_adapter",
+          "expr": "minknow_adapter{address=\"$address\", name=\"$deviceId\"}",
           "hide": false,
           "legendFormat": "adapter",
           "range": true,
@@ -445,7 +596,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 9
+        "y": 17
       },
       "id": 31,
       "options": {
@@ -469,7 +620,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_estimated_selected_bases",
+          "expr": "minknow_estimated_selected_bases{address=\"$address\", name=\"$deviceId\"}",
           "legendFormat": "estimated_selected_bases",
           "range": true,
           "refId": "A"
@@ -543,7 +694,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 9
+        "y": 17
       },
       "id": 21,
       "options": {
@@ -567,7 +718,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "sum(minknow_read_count{address=\"$address\"})",
+          "expr": "sum(minknow_read_count{address=\"$address\", name=\"$deviceId\"})",
           "legendFormat": "read_count",
           "range": true,
           "refId": "A"
@@ -641,7 +792,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 17
+        "y": 25
       },
       "id": 25,
       "options": {
@@ -665,7 +816,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_basecalled_fail_bases{address=\"$address\"}",
+          "expr": "minknow_basecalled_fail_bases{address=\"$address\", name=\"$deviceId\"}",
           "legendFormat": "fail_bases",
           "range": true,
           "refId": "A"
@@ -676,19 +827,11 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_basecalled_pass_bases{address=\"$address\"}",
+          "expr": "minknow_basecalled_pass_bases{address=\"$address\", name=\"$deviceId\"}",
           "hide": false,
           "legendFormat": "pass_bases",
           "range": true,
           "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
-          },
-          "hide": false,
-          "refId": "C"
         }
       ],
       "title": "Basecalled bases",
@@ -759,7 +902,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 17
+        "y": 25
       },
       "id": 27,
       "options": {
@@ -783,7 +926,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_basecalled_fail_read_count{address=\"$address\"}",
+          "expr": "minknow_basecalled_fail_read_count{address=\"$address\", name=\"$deviceId\"}",
           "legendFormat": "fail_read_count",
           "range": true,
           "refId": "A"
@@ -794,7 +937,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_basecalled_pass_read_count{address=\"$address\"}",
+          "expr": "minknow_basecalled_pass_read_count{address=\"$address\", name=\"$deviceId\"}",
           "hide": false,
           "legendFormat": "pass_read_count",
           "range": true,
@@ -806,7 +949,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_basecalled_skipped_read_count{address=\"$address\"}",
+          "expr": "minknow_basecalled_skipped_read_count{address=\"$address\", name=\"$deviceId\"}",
           "hide": false,
           "legendFormat": "skipped_read_count",
           "range": true,
@@ -881,7 +1024,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 25
+        "y": 33
       },
       "id": 37,
       "options": {
@@ -905,7 +1048,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_asic_temp",
+          "expr": "minknow_asic_temp{address=\"$address\", name=\"$deviceId\"}",
           "legendFormat": "asic_temp",
           "range": true,
           "refId": "A"
@@ -916,7 +1059,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_heat_sink_temp",
+          "expr": "minknow_heat_sink_temp{address=\"$address\", name=\"$deviceId\"}",
           "hide": false,
           "legendFormat": "heat_sink_temp",
           "range": true,
@@ -991,7 +1134,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 25
+        "y": 33
       },
       "id": 39,
       "options": {
@@ -1015,7 +1158,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_bias_voltage",
+          "expr": "minknow_bias_voltage{address=\"$address\", name=\"$deviceId\"}",
           "legendFormat": "bias_voltage",
           "range": true,
           "refId": "A"
@@ -1089,7 +1232,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 33
+        "y": 41
       },
       "id": 23,
       "options": {
@@ -1113,7 +1256,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "sum(minknow_alignment_deletions{address=\"$address\"})",
+          "expr": "sum(minknow_alignment_deletions{address=\"$address\", name=\"$deviceId\"})",
           "hide": false,
           "legendFormat": "deletions",
           "range": true,
@@ -1125,7 +1268,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "sum(minknow_alignment_insertions{address=\"$address\"})",
+          "expr": "sum(minknow_alignment_insertions{address=\"$address\", name=\"$deviceId\"})",
           "hide": false,
           "legendFormat": "insertions",
           "range": true,
@@ -1137,7 +1280,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "sum(minknow_alignment_matches{address=\"$address\"})",
+          "expr": "sum(minknow_alignment_matches{address=\"$address\", name=\"$deviceId\"})",
           "hide": false,
           "legendFormat": "matches",
           "range": true,
@@ -1149,7 +1292,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "sum(minknow_alignment_mismatches{address=\"$address\"})",
+          "expr": "sum(minknow_alignment_mismatches{address=\"$address\", name=\"$deviceId\"})",
           "hide": false,
           "legendFormat": "mismatches",
           "range": true,
@@ -1224,7 +1367,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 33
+        "y": 41
       },
       "id": 41,
       "options": {
@@ -1248,7 +1391,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "minknow_alignment_coverage",
+          "expr": "minknow_alignment_coverage{address=\"$address\", name=\"$deviceId\"}",
           "legendFormat": "coverage",
           "range": true,
           "refId": "A"
@@ -1320,5 +1463,5 @@
   "timezone": "browser",
   "title": "minknow-exporter",
   "uid": "lc8de2p4k",
-  "version": 10
+  "version": 16
 }
