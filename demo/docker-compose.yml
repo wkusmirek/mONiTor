@@ -5,7 +5,7 @@ services:
     network_mode: "host"
     volumes:
       - /tmp:/tmp
-    command: ["--web.listen-address", ":9309", "--host", "localhost", "--port", "9502", "--overriddedHost", "10.153.12.161", "--overriddedPort", "9502"]
+    command: ["--web.listen-address", ":9311", "--host", "localhost", "--port", "9502", "--overriddedHost", "10.153.12.161", "--overriddedPort", "9502"]
     deploy:
       replicas: 1
       resources:
@@ -19,7 +19,7 @@ services:
     network_mode: "host"
     volumes:
       - /tmp:/tmp
-    command: ["--web.listen-address", ":9310", "--host", "localhost", "--port", "9503", "--overriddedHost", "10.153.12.162", "--overriddedPort", "9502"]
+    command: ["--web.listen-address", ":9312", "--host", "localhost", "--port", "9503", "--overriddedHost", "10.153.12.162", "--overriddedPort", "9502"]
     deploy:
       replicas: 1
       resources:
@@ -28,26 +28,12 @@ services:
           memory: 512M
       restart_policy:
         condition: on-failure
-  minknow-exporter-3:
-    image: "wkusmirek/minknow-exporter:latest"
-    network_mode: "host"
-    volumes:
-      - /tmp:/tmp
-    command: ["--web.listen-address", ":9311", "--host", "localhost", "--port", "9504", "--overriddedHost", "10.153.12.162", "--overriddedPort", "9502"]
-    deploy:
-      replicas: 1
-      resources:
-        limits:
-          cpus: "0.5"
-          memory: 512M
-      restart_policy:
-        condition: on-failure
-  fast5-exporter:
+  fast5-exporter-1:
     image: "wkusmirek/fast5-exporter:latest"
     network_mode: "host"
     volumes:
       - /tmp:/tmp
-    command: ["--host", "localhost", "--port", "1111", "--path", "/tmp/fast5", "--overriddedHost", "10.153.12.161", "--overriddedPort", "5555", "--overriddedPath", "/data/ont/fast5"]
+    command: ["--web.listen-address", ":9307", "--host", "localhost", "--port", "9307", "--path", "/tmp/fast5/1", "--overriddedHost", "10.153.12.161", "--overriddedPort", "5555", "--overriddedPath", "/data/ont/fast5"]
     deploy:
       replicas: 1
       resources:
@@ -56,12 +42,40 @@ services:
           memory: 512M
       restart_policy:
         condition: on-failure
-  fastq-exporter:
+  fast5-exporter-2:
+    image: "wkusmirek/fast5-exporter:latest"
+    network_mode: "host"
+    volumes:
+      - /tmp:/tmp
+    command: ["--web.listen-address", ":9308", "--host", "localhost", "--port", "9308", "--path", "/tmp/fast5/2", "--overriddedHost", "10.153.12.162", "--overriddedPort", "5555", "--overriddedPath", "/data/ont/fast5"]
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+      restart_policy:
+        condition: on-failure
+  fastq-exporter-1:
     image: "wkusmirek/fastq-exporter:latest"
     network_mode: "host"
     volumes:
       - /tmp:/tmp
-    command: ["--host", "localhost", "--port", "1111", "--path", "/tmp/fastq", "--overriddedHost", "10.153.12.161", "--overriddedPort", "5555", "--overriddedPath", "/data/ont/fastq"]
+    command: ["--web.listen-address", ":9309", "--host", "localhost", "--port", "9309", "--path", "/tmp/fastq/1", "--overriddedHost", "10.153.12.161", "--overriddedPort", "5555", "--overriddedPath", "/data/ont/fastq"]
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+      restart_policy:
+        condition: on-failure
+  fastq-exporter-2:
+    image: "wkusmirek/fastq-exporter:latest"
+    network_mode: "host"
+    volumes:
+      - /tmp:/tmp
+    command: ["--web.listen-address", ":9310", "--host", "localhost", "--port", "9310", "--path", "/tmp/fastq/2", "--overriddedHost", "10.153.12.162", "--overriddedPort", "5555", "--overriddedPath", "/data/ont/fastq"]
     deploy:
       replicas: 1
       resources:

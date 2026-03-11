@@ -26,40 +26,47 @@ scrape_configs:
       - targets:
         - localhost:9090
 
-  - job_name: fast5-exporter
+  - job_name: fast5-exporter-1
     metrics_path: /metrics
     scheme: http
     static_configs:
       - targets:
         - localhost:9307
 
-  - job_name: fastq-exporter
+  - job_name: fast5-exporter-2
     metrics_path: /metrics
     scheme: http
     static_configs:
       - targets:
         - localhost:9308
 
-  - job_name: minknow-exporter-1
+  - job_name: fastq-exporter-1
     metrics_path: /metrics
     scheme: http
     static_configs:
       - targets:
         - localhost:9309
 
-  - job_name: minknow-exporter-2
+  - job_name: fastq-exporter-2
     metrics_path: /metrics
     scheme: http
     static_configs:
       - targets:
         - localhost:9310
 
-  - job_name: minknow-exporter-3
+  - job_name: minknow-exporter-1
     metrics_path: /metrics
     scheme: http
     static_configs:
       - targets:
         - localhost:9311
+
+  - job_name: minknow-exporter-2
+    metrics_path: /metrics
+    scheme: http
+    static_configs:
+      - targets:
+        - localhost:9312
 
   - job_name: node-exporter
     metrics_path: /metrics

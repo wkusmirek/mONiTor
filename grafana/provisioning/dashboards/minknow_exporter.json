@@ -28,185 +28,12 @@
   "links": [],
   "panels": [
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 0
-      },
-      "id": 42,
-      "options": {
-        "inlineEditing": true,
-        "panZoom": false,
-        "root": {
-          "background": {
-            "color": {
-              "fixed": "transparent"
-            }
-          },
-          "border": {
-            "color": {
-              "fixed": "dark-green"
-            }
-          },
-          "constraint": {
-            "horizontal": "left",
-            "vertical": "top"
-          },
-          "elements": [
-            {
-              "background": {
-                "color": {
-                  "fixed": "#D9D9D9"
-                }
-              },
-              "border": {
-                "color": {
-                  "fixed": "dark-green"
-                }
-              },
-              "config": {
-                "align": "center",
-                "color": {
-                  "fixed": "#000000"
-                },
-                "size": 20,
-                "text": {
-                  "field": "",
-                  "fixed": "",
-                  "mode": "field"
-                },
-                "valign": "middle"
-              },
-              "connections": [
-                {
-                  "color": {
-                    "fixed": "rgb(204, 204, 220)"
-                  },
-                  "path": "straight",
-                  "size": {
-                    "fixed": 2,
-                    "max": 10,
-                    "min": 1
-                  },
-                  "source": {
-                    "x": 1,
-                    "y": 0
-                  },
-                  "sourceOriginal": {
-                    "x": 360,
-                    "y": 125
-                  },
-                  "target": {
-                    "x": -0.40540540540540543,
-                    "y": 0.2953929539295393
-                  },
-                  "targetOriginal": {
-                    "x": 352,
-                    "y": 130
-                  }
-                }
-              ],
-              "constraint": {
-                "horizontal": "left",
-                "vertical": "top"
-              },
-              "links": [],
-              "name": "Element 1",
-              "placement": {
-                "height": 50,
-                "left": 100,
-                "rotation": 0,
-                "top": 100,
-                "width": 260
-              },
-              "type": "metric-value"
-            }
-          ],
-          "name": "Element 1772782173580",
-          "placement": {
-            "height": 100,
-            "left": 0,
-            "rotation": 0,
-            "top": 0,
-            "width": 100
-          },
-          "type": "frame"
-        },
-        "showAdvancedTypes": true,
-        "tooltip": {
-          "disableForOneClick": false,
-          "mode": "single"
-        },
-        "zoomToContent": false
-      },
-      "pluginVersion": "12.2.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
-          },
-          "editorMode": "builder",
-          "exemplar": false,
-          "expr": "minknow_state{address=\"$address\", name=\"$deviceId\"}",
-          "format": "table",
-          "instant": true,
-          "legendFormat": "__auto",
-          "range": false,
-          "refId": "A"
-        }
-      ],
-      "title": "New panel",
-      "transformations": [
-        {
-          "id": "labelsToFields",
-          "options": {
-            "keepLabels": [
-              "channel",
-              "address",
-              "name",
-              "state"
-            ],
-            "mode": "columns"
-          }
-        }
-      ],
-      "type": "canvas"
-    },
-    {
       "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 0
       },
       "id": 17,
       "panels": [],
@@ -220,30 +47,21 @@
       },
       "fieldConfig": {
         "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "axisPlacement": "auto",
-            "fillOpacity": 70,
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineWidth": 1
-          },
           "mappings": [],
           "thresholds": {
-            "mode": "absolute",
+            "mode": "percentage",
             "steps": [
               {
                 "color": "green",
                 "value": 0
               },
               {
+                "color": "orange",
+                "value": 70
+              },
+              {
                 "color": "red",
-                "value": 80
+                "value": 85
               }
             ]
           }
@@ -254,23 +72,23 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 9
+        "y": 1
       },
-      "id": 19,
+      "id": 42,
       "options": {
-        "colWidth": 0.9,
-        "legend": {
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
         },
-        "rowHeight": 0.9,
-        "showValue": "auto",
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "single",
-          "sort": "none"
-        }
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
       },
       "pluginVersion": "12.2.0",
       "targets": [
@@ -280,14 +98,158 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "count by(state) (minknow_state{address=\"$address\", name=\"$deviceId\"})",
-          "legendFormat": "__auto",
+          "expr": "minknow_pending_mux_change{address=\"$address\", name=\"$deviceId\"}",
+          "legendFormat": "pending_mux_change",
           "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "builder",
+          "expr": "minknow_unavailable{address=\"$address\", name=\"$deviceId\"}",
+          "hide": false,
+          "legendFormat": "unavailable",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "builder",
+          "expr": "minknow_inrange{address=\"$address\", name=\"$deviceId\"}",
+          "hide": false,
+          "legendFormat": "inrange",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "builder",
+          "expr": "minknow_above{address=\"$address\", name=\"$deviceId\"}",
+          "hide": false,
+          "legendFormat": "above",
+          "range": true,
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "builder",
+          "expr": "minknow_strand{address=\"$address\", name=\"$deviceId\"}",
+          "hide": false,
+          "legendFormat": "strand",
+          "range": true,
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "builder",
+          "expr": "minknow_below{address=\"$address\", name=\"$deviceId\"}",
+          "hide": false,
+          "legendFormat": "below",
+          "range": true,
+          "refId": "F"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "builder",
+          "expr": "minknow_multiple{address=\"$address\", name=\"$deviceId\"}",
+          "hide": false,
+          "legendFormat": "multiple",
+          "range": true,
+          "refId": "G"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "builder",
+          "expr": "minknow_saturated{address=\"$address\", name=\"$deviceId\"}",
+          "hide": false,
+          "legendFormat": "saturated",
+          "range": true,
+          "refId": "H"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "builder",
+          "expr": "minknow_good_single{address=\"$address\", name=\"$deviceId\"}",
+          "hide": false,
+          "legendFormat": "good_single",
+          "range": true,
+          "refId": "I"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "builder",
+          "expr": "minknow_unknown{address=\"$address\", name=\"$deviceId\"}",
+          "hide": false,
+          "legendFormat": "unknown",
+          "range": true,
+          "refId": "J"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "builder",
+          "expr": "minknow_unclassified{address=\"$address\", name=\"$deviceId\"}",
+          "hide": false,
+          "legendFormat": "unclassified",
+          "range": true,
+          "refId": "K"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "builder",
+          "expr": "minknow_unblocking{address=\"$address\", name=\"$deviceId\"}",
+          "hide": false,
+          "legendFormat": "unblocking",
+          "range": true,
+          "refId": "L"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "P1809F7CD0C75ACF3"
+          },
+          "editorMode": "builder",
+          "expr": "minknow_adapter{address=\"$address\", name=\"$deviceId\"}",
+          "hide": false,
+          "legendFormat": "adapter",
+          "range": true,
+          "refId": "M"
         }
       ],
-      "title": "Flow cell state",
-      "type": "status-history"
+      "title": "Pore states",
+      "type": "gauge"
     },
     {
       "datasource": {
@@ -354,15 +316,15 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 9
+        "y": 1
       },
       "id": 33,
       "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "hidden",
-          "placement": "right",
-          "showLegend": false
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "hideZeros": false,
@@ -596,7 +558,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 17
+        "y": 9
       },
       "id": 31,
       "options": {
@@ -694,7 +656,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 17
+        "y": 9
       },
       "id": 21,
       "options": {
@@ -792,7 +754,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 25
+        "y": 17
       },
       "id": 25,
       "options": {
@@ -902,7 +864,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 25
+        "y": 17
       },
       "id": 27,
       "options": {
@@ -1024,7 +986,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 33
+        "y": 25
       },
       "id": 37,
       "options": {
@@ -1134,7 +1096,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 33
+        "y": 25
       },
       "id": 39,
       "options": {
@@ -1232,7 +1194,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 41
+        "y": 33
       },
       "id": 23,
       "options": {
@@ -1367,7 +1329,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 41
+        "y": 33
       },
       "id": 41,
       "options": {
@@ -1463,5 +1425,5 @@
   "timezone": "browser",
   "title": "minknow-exporter",
   "uid": "lc8de2p4k",
-  "version": 16
+  "version": 20
 }

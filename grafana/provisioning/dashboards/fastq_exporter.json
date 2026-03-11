@@ -129,7 +129,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "sum(fastq_amount_reads)",
+          "expr": "sum(fastq_amount_reads{address=\"$address\", path=\"$path\"})",
           "legendFormat": "total number of reads",
           "range": true,
           "refId": "A"
@@ -227,7 +227,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "sum(fastq_amount_A)+sum(fastq_amount_C)+sum(fastq_amount_G)+sum(fastq_amount_T)+sum(fastq_amount_N)",
+          "expr": "sum(fastq_amount_A{address=\"$address\", path=\"$path\"})+sum(fastq_amount_C{address=\"$address\", path=\"$path\"})+sum(fastq_amount_G{address=\"$address\", path=\"$path\"})+sum(fastq_amount_T{address=\"$address\", path=\"$path\"})+sum(fastq_amount_N{address=\"$address\", path=\"$path\"})",
           "legendFormat": "total number of bases",
           "range": true,
           "refId": "A"
@@ -325,7 +325,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "max(fastq_max_read)",
+          "expr": "max(fastq_max_read{address=\"$address\", path=\"$path\"})",
           "legendFormat": "longest read length",
           "range": true,
           "refId": "A"
@@ -423,7 +423,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "(sum(fastq_amount_A)+sum(fastq_amount_C)+sum(fastq_amount_G)+sum(fastq_amount_T)+sum(fastq_amount_N))/sum(fastq_amount_reads)",
+          "expr": "(sum(fastq_amount_A{address=\"$address\", path=\"$path\"})+sum(fastq_amount_C{address=\"$address\", path=\"$path\"})+sum(fastq_amount_G{address=\"$address\", path=\"$path\"})+sum(fastq_amount_T{address=\"$address\", path=\"$path\"})+sum(fastq_amount_N{address=\"$address\", path=\"$path\"}))/sum(fastq_amount_reads{address=\"$address\", path=\"$path\"})",
           "legendFormat": "average read length",
           "range": true,
           "refId": "A"
@@ -521,7 +521,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "sum(fastq_amount_A)/(sum(fastq_amount_A)+sum(fastq_amount_C)+sum(fastq_amount_G)+sum(fastq_amount_T)+sum(fastq_amount_N))",
+          "expr": "sum(fastq_amount_A{address=\"$address\", path=\"$path\"})/(sum(fastq_amount_A{address=\"$address\", path=\"$path\"})+sum(fastq_amount_C{address=\"$address\", path=\"$path\"})+sum(fastq_amount_G{address=\"$address\", path=\"$path\"})+sum(fastq_amount_T{address=\"$address\", path=\"$path\"})+sum(fastq_amount_N{address=\"$address\", path=\"$path\"}))",
           "legendFormat": "A",
           "range": true,
           "refId": "A"
@@ -532,7 +532,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "sum(fastq_amount_C)/(sum(fastq_amount_A)+sum(fastq_amount_C)+sum(fastq_amount_G)+sum(fastq_amount_T)+sum(fastq_amount_N))",
+          "expr": "sum(fastq_amount_C{address=\"$address\", path=\"$path\"})/(sum(fastq_amount_A{address=\"$address\", path=\"$path\"})+sum(fastq_amount_C{address=\"$address\", path=\"$path\"})+sum(fastq_amount_G{address=\"$address\", path=\"$path\"})+sum(fastq_amount_T{address=\"$address\", path=\"$path\"})+sum(fastq_amount_N{address=\"$address\", path=\"$path\"}))",
           "hide": false,
           "legendFormat": "C",
           "range": true,
@@ -544,7 +544,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "sum(fastq_amount_G)/(sum(fastq_amount_A)+sum(fastq_amount_C)+sum(fastq_amount_G)+sum(fastq_amount_T)+sum(fastq_amount_N))",
+          "expr": "sum(fastq_amount_G{address=\"$address\", path=\"$path\"})/(sum(fastq_amount_A{address=\"$address\", path=\"$path\"})+sum(fastq_amount_C{address=\"$address\", path=\"$path\"})+sum(fastq_amount_G{address=\"$address\", path=\"$path\"})+sum(fastq_amount_T{address=\"$address\", path=\"$path\"})+sum(fastq_amount_N{address=\"$address\", path=\"$path\"}))",
           "hide": false,
           "legendFormat": "G",
           "range": true,
@@ -556,7 +556,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "sum(fastq_amount_T)/(sum(fastq_amount_A)+sum(fastq_amount_C)+sum(fastq_amount_G)+sum(fastq_amount_T)+sum(fastq_amount_N))",
+          "expr": "sum(fastq_amount_T{address=\"$address\", path=\"$path\"})/(sum(fastq_amount_A{address=\"$address\", path=\"$path\"})+sum(fastq_amount_C{address=\"$address\", path=\"$path\"})+sum(fastq_amount_G{address=\"$address\", path=\"$path\"})+sum(fastq_amount_T{address=\"$address\", path=\"$path\"})+sum(fastq_amount_N{address=\"$address\", path=\"$path\"}))",
           "hide": false,
           "legendFormat": "T",
           "range": true,
@@ -568,7 +568,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "sum(fastq_amount_N)/(sum(fastq_amount_A)+sum(fastq_amount_C)+sum(fastq_amount_G)+sum(fastq_amount_T)+sum(fastq_amount_N))",
+          "expr": "sum(fastq_amount_N{address=\"$address\", path=\"$path\"})/(sum(fastq_amount_A{address=\"$address\", path=\"$path\"})+sum(fastq_amount_C{address=\"$address\", path=\"$path\"})+sum(fastq_amount_G{address=\"$address\", path=\"$path\"})+sum(fastq_amount_T{address=\"$address\", path=\"$path\"})+sum(fastq_amount_N{address=\"$address\", path=\"$path\"}))",
           "hide": false,
           "legendFormat": "N",
           "range": true,
@@ -667,7 +667,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "fastq_total_average_quality",
+          "expr": "fastq_total_average_quality{address=\"$address\", path=\"$path\"}",
           "legendFormat": "total average quality",
           "range": true,
           "refId": "A"
@@ -778,7 +778,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "fastq_amount_reads{channel=\"$channel\"}",
+          "expr": "fastq_amount_reads{channel=\"$channel\", path=\"$path\", address=\"$address\"}",
           "legendFormat": "number of reads per channel",
           "range": true,
           "refId": "A"
@@ -876,7 +876,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "sum(fastq_amount_A{channel=\"$channel\"})+sum(fastq_amount_C{channel=\"$channel\"})+sum(fastq_amount_G{channel=\"$channel\"})+sum(fastq_amount_T{channel=\"$channel\"})+sum(fastq_amount_N{channel=\"$channel\"})",
+          "expr": "sum(fastq_amount_A{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_C{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_G{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_T{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_N{address=\"$address\", path=\"$path\", channel=\"$channel\"})",
           "legendFormat": "number of bases per channel",
           "range": true,
           "refId": "A"
@@ -974,7 +974,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "fastq_max_read{channel=\"$channel\"}",
+          "expr": "fastq_max_read{channel=\"$channel\", address=\"$address\", path=\"$path\"}",
           "legendFormat": "longest read length per channel",
           "range": true,
           "refId": "A"
@@ -1072,7 +1072,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "(sum(fastq_amount_A{channel=\"$channel\"})+sum(fastq_amount_C{channel=\"$channel\"})+sum(fastq_amount_G{channel=\"$channel\"})+sum(fastq_amount_T{channel=\"$channel\"})+sum(fastq_amount_N{channel=\"$channel\"})) / sum(fastq_amount_reads{channel=\"$channel\"})",
+          "expr": "(sum(fastq_amount_A{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_C{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_G{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_T{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_N{address=\"$address\", path=\"$path\", channel=\"$channel\"})) / sum(fastq_amount_reads{address=\"$address\", path=\"$path\", channel=\"$channel\"})",
           "legendFormat": "average read length per channel",
           "range": true,
           "refId": "A"
@@ -1170,7 +1170,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "sum(fastq_amount_A{channel=\"$channel\"})/(sum(fastq_amount_A{channel=\"$channel\"})+sum(fastq_amount_C{channel=\"$channel\"})+sum(fastq_amount_G{channel=\"$channel\"})+sum(fastq_amount_T{channel=\"$channel\"})+sum(fastq_amount_N{channel=\"$channel\"}))",
+          "expr": "sum(fastq_amount_A{address=\"$address\", path=\"$path\", channel=\"$channel\"})/(sum(fastq_amount_A{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_C{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_G{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_T{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_N{address=\"$address\", path=\"$path\", channel=\"$channel\"}))",
           "legendFormat": "A",
           "range": true,
           "refId": "A"
@@ -1181,7 +1181,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "sum(fastq_amount_C{channel=\"$channel\"})/(sum(fastq_amount_A{channel=\"$channel\"})+sum(fastq_amount_C{channel=\"$channel\"})+sum(fastq_amount_G{channel=\"$channel\"})+sum(fastq_amount_T{channel=\"$channel\"})+sum(fastq_amount_N{channel=\"$channel\"}))",
+          "expr": "sum(fastq_amount_C{address=\"$address\", path=\"$path\", channel=\"$channel\"})/(sum(fastq_amount_A{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_C{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_G{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_T{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_N{address=\"$address\", path=\"$path\", channel=\"$channel\"}))",
           "hide": false,
           "legendFormat": "C",
           "range": true,
@@ -1193,7 +1193,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "sum(fastq_amount_G{channel=\"$channel\"})/(sum(fastq_amount_A{channel=\"$channel\"})+sum(fastq_amount_C{channel=\"$channel\"})+sum(fastq_amount_G{channel=\"$channel\"})+sum(fastq_amount_T{channel=\"$channel\"})+sum(fastq_amount_N{channel=\"$channel\"}))",
+          "expr": "sum(fastq_amount_G{address=\"$address\", path=\"$path\", channel=\"$channel\"})/(sum(fastq_amount_A{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_C{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_G{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_T{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_N{address=\"$address\", path=\"$path\", channel=\"$channel\"}))",
           "hide": false,
           "legendFormat": "G",
           "range": true,
@@ -1205,7 +1205,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "sum(fastq_amount_T{channel=\"$channel\"})/(sum(fastq_amount_A{channel=\"$channel\"})+sum(fastq_amount_C{channel=\"$channel\"})+sum(fastq_amount_G{channel=\"$channel\"})+sum(fastq_amount_T{channel=\"$channel\"})+sum(fastq_amount_N{channel=\"$channel\"}))",
+          "expr": "sum(fastq_amount_T{address=\"$address\", path=\"$path\", channel=\"$channel\"})/(sum(fastq_amount_A{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_C{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_G{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_T{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_N{address=\"$address\", path=\"$path\", channel=\"$channel\"}))",
           "hide": false,
           "legendFormat": "T",
           "range": true,
@@ -1217,7 +1217,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "code",
-          "expr": "sum(fastq_amount_N{channel=\"$channel\"})/(sum(fastq_amount_A{channel=\"$channel\"})+sum(fastq_amount_C{channel=\"$channel\"})+sum(fastq_amount_G{channel=\"$channel\"})+sum(fastq_amount_T{channel=\"$channel\"})+sum(fastq_amount_N{channel=\"$channel\"}))",
+          "expr": "sum(fastq_amount_N{address=\"$address\", path=\"$path\", channel=\"$channel\"})/(sum(fastq_amount_A{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_C{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_G{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_T{address=\"$address\", path=\"$path\", channel=\"$channel\"})+sum(fastq_amount_N{address=\"$address\", path=\"$path\", channel=\"$channel\"}))",
           "hide": false,
           "legendFormat": "N",
           "range": true,
@@ -1316,7 +1316,7 @@
             "uid": "P1809F7CD0C75ACF3"
           },
           "editorMode": "builder",
-          "expr": "fastq_average_quality{channel=\"$channel\"}",
+          "expr": "fastq_average_quality{channel=\"$channel\", address=\"$address\", path=\"$path\"}",
           "legendFormat": "average quality per channel",
           "range": true,
           "refId": "A"
@@ -1398,7 +1398,7 @@
           "query": "label_values(fastq_amount_reads{address=\"$address\", path=\"$path\"},channel)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
-        "refresh": 1,
+        "refresh": 2,
         "regex": "",
         "sort": 3,
         "type": "query"
@@ -1413,5 +1413,5 @@
   "timezone": "browser",
   "title": "fastq-exporter",
   "uid": "lc8de2p4l",
-  "version": 7
+  "version": 13
 }
