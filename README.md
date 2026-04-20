@@ -1,39 +1,19 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/wkusmirek/mONiTor/pull/73 -->
 <a name="readme-top"></a>
-<!--
-*** Thanks for checking out the mONiTor. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
 
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+[![License][license-shield]][license-url]
 
-
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <h3 align="center">mONiTor</h3>
+  <h1 align="center">mONiTor</h1>
 
   <p align="center">
-    Real-time monitoring of Oxford Nanopore Technology sequencing run
+    Real-time monitoring system for Oxford Nanopore sequencing runs
     <br />
-    <a href="http://eve.ii.pw.edu.pl:9007/dashboards/?tag=mONiTor">View Demo</a>
+    <a href="http://eve.ii.pw.edu.pl:9007/dashboards/?tag=mONiTor"><strong>View Demo</strong></a>
     ·
     <a href="https://github.com/wkusmirek/mONiTor/issues">Report Bug</a>
     ·
@@ -41,123 +21,164 @@
   </p>
 </div>
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+---
 
-Nanopore sequencing is the third-generation DNA sequencing technology and the significant advantages of nanopores include ultralong reads, low material requirement, and high throughput. Along with the development of the nanopore technology itself, open-source tools supporting work with the sequencers should also be developed.
+## Overview
 
-Herein, we presented mONiTor - the new system for monitoring the nanopore sequencing process. The tool monitors the metrics available in the sequencer, the state of the computer to which the sequencer is connected, and the contents of the fast5 and fastq files. The metrics are stored in the Prometheus database and presented in interactive diagrams using the Grafana software. Thanks to the technologies used, the user can easily log in and view the sequencing status (current and archived). In addition, after appropriate configuration, the user can be informed by e-mail about exceeding the limit, e.g. 90% disk memory occupancy or abnormal state of pores in the sequencer, etc.
+**mONiTor** is an open-source platform for real-time monitoring of Oxford Nanopore sequencing experiments.  
+It integrates sequencing metrics, system performance, and file-based statistics into a unified and scalable dashboard.
 
-Source code and documentation are available at https://github.com/wkusmirek/mONiTor, an example server is available at http://eve.ii.pw.edu.pl:9007/dashboards?tag=mONiTor with the username equals to _test_ and the password equals also to _test_.
+The system is built using:
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+- **Prometheus** – metrics collection and storage  
+- **Grafana** – visualization and alerting  
+- Custom exporters for sequencing and system-level data  
+
+Designed for both **single-device setups** and **large sequencing facilities**.
+
+---
+
+## Motivation
+
+Nanopore sequencing provides real-time, long-read DNA analysis with high throughput.  
+However, existing monitoring tools:
+
+- are often closed-source  
+- lack extensibility  
+- do not monitor system-level resources  
+- are not easily scalable  
+
+**mONiTor** addresses these limitations by providing a flexible, open, and scalable monitoring framework.
+
+---
+
+## Features
+
+- Real-time monitoring of sequencing runs  
+- Integration with MinKNOW metrics  
+- System monitoring (CPU, RAM, disk usage)  
+- FAST5 / FASTQ file statistics  
+- Interactive dashboards (Grafana)  
+- Configurable alerts (e.g. disk usage, pore state)  
+- Multi-user support  
+- Cloud-ready architecture  
+- Scalable across multiple sequencing devices  
+
+---
+
+## Architecture
+
+![Architecture](img/mONiTor.png)
+
+### Components
+
+- **node_exporter** – system metrics  
+- **minknow_exporter** – sequencer metrics  
+- **fast5_exporter** – raw signal data  
+- **fastq_exporter** – basecalled reads  
+
+- **Prometheus** – time-series database  
+- **Grafana** – visualization and alerting  
+
+One central instance can monitor **multiple sequencing devices across different machines**.
+
+---
+
+## Example Dashboards
+
+### System Monitoring (node_exporter)
+![System Dashboard](img/node-exporter-panel.png)
+
+### Sequencer Metrics (minknow_exporter)
+![MinKNOW Dashboard](img/minknow-exporter-panel.png)
+
+### FASTQ Statistics
+![FASTQ Dashboard](img/fastq-exporter-panel.png)
+
+### FAST5 Statistics
+![FAST5 Dashboard](img/fast5-exporter-panel.png)
 
 
-<!-- GETTING STARTED -->
+---
+
 ## Getting Started
 
-In order to install and run the mONiTor system, you do not need to install any components other than Docker.
+### Requirements
 
-### Installation and Usage
+- Docker
+- Docker Compose
 
-1. Clone the repo:
-   ```sh
-   git clone https://github.com/wkusmirek/mONiTor.git
-   ```
-2. Enter to main dir:
-   ```sh
-   cd mONiToR
-   ```
-3. Run the mONiTor system:
-   ```js
-   docker-compose up
-   ```
-4. Open web browser and go to:
-   ```sh
-   localhost:3000
-   ```
-5. Default admin user is:
-   ```sh
-   username: admin
-   password: admin
-   ```
+---
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### Installation
 
-<!-- CONTRIBUTING -->
+```bash
+git clone https://github.com/wkusmirek/mONiTor.git
+cd mONiTor
+docker-compose up
+```
+
+### Access
+
+Open in browser:
+
+```
+http://localhost:3000
+```
+
+###Default credentials:
+
+```
+username: admin
+password: admin
+```
+
+## Use Cases
+Monitoring long-running nanopore sequencing experiments
+Managing multiple sequencing devices in core facilities
+Detecting anomalies (temperature, pore activity, disk usage)
+Tracking sequencing output in real time
+
+## Performance
+Low CPU and RAM usage
+Exporters are passive (triggered by Prometheus)
+Linear disk usage growth (Prometheus database)
+Suitable for long-running experiments
+
+## Comparison with Existing Tools
+Feature	mONiTor	minoTour	BoardION
+Open-source	✅	✅	✅
+System monitoring	✅	❌	❌
+Alerts	✅	✅	❌
+Multi-user support	✅	✅	❌
+Scalability	✅	⚠️ limited	⚠️ limited
+
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are welcome!
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+Fork the repository
+Create your branch (feature/your-feature)
+Commit your changes
+Push to your fork
+Open a Pull Request
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LICENSE -->
 ## License
 
-Distributed under the Apache License Version 2.0. See `LICENSE` file for more information.
+Distributed under the Apache License 2.0.
+See the LICENSE file for details.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
 ## Contact
 
-Wiktor Kuśmirek - wiktor.kusmirek@pw.edu.pl
+Wiktor Kuśmirek
+wiktor.kusmirek@pw.edu.pl
 
-Project Link: [https://github.com/wkusmirek/mONiTor](https://github.com/wkusmirek/mONiTor)
+Project repository:
+https://github.com/wkusmirek/mONiTor
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
-
-* [Prometheus](https://prometheus.io/)
-* [Grafana](https://grafana.com/)
+https://prometheus.io/
+https://grafana.com/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/wkusmirek/mONiTor.svg?style=for-the-badge
-[contributors-url]: https://github.com/wkusmirek/mONiTor/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/wkusmirek/mONiTor.svg?style=for-the-badge
-[forks-url]: https://github.com/wkusmirek/mONiTor/network/members
-[stars-shield]: https://img.shields.io/github/stars/wkusmirek/mONiTor.svg?style=for-the-badge
-[stars-url]: https://github.com/wkusmirek/mONiTor/stargazers
-[issues-shield]: https://img.shields.io/github/issues/wkusmirek/mONiTor.svg?style=for-the-badge
-[issues-url]: https://github.com/wkusmirek/mONiTor/issues
-[license-shield]: https://img.shields.io/github/license/wkusmirek/mONiTor.svg?style=for-the-badge
-[license-url]: https://github.com/wkusmirek/mONiTor/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/wkusmirek
-[product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
+<!-- MARKDOWN LINKS -->
