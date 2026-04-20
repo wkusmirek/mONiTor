@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="img/logo.png" alt="mONiTor logo" width="180">
+  <img src="img/logo.png" alt="mONiTor logo" width="250">
 </p>
 
 <p align="center">
