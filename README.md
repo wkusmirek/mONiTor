@@ -13,8 +13,8 @@
   <p align="center">
     Real-time monitoring system for Oxford Nanopore sequencing runs
     <br />
-    <a href="http://eve.ii.pw.edu.pl:9007/dashboards/?tag=mONiTor"><strong>View Demo</strong></a>
-    ·
+    <!--<a href="http://eve.ii.pw.edu.pl:9007/dashboards/?tag=mONiTor"><strong>View Demo</strong></a>-->
+    <!--·-->
     <a href="https://github.com/wkusmirek/mONiTor/issues">Report Bug</a>
     ·
     <a href="https://github.com/wkusmirek/mONiTor/issues">Request Feature</a>
@@ -126,7 +126,7 @@ Open in browser:
 http://localhost:3000
 ```
 
-###Default credentials:
+Default credentials:
 
 ```
 username: admin
@@ -145,23 +145,15 @@ Exporters are passive (triggered by Prometheus)
 Linear disk usage growth (Prometheus database)
 Suitable for long-running experiments
 
-## Comparison with Existing Tools
-Feature	mONiTor	minoTour	BoardION
-Open-source	✅	✅	✅
-System monitoring	✅	❌	❌
-Alerts	✅	✅	❌
-Multi-user support	✅	✅	❌
-Scalability	✅	⚠️ limited	⚠️ limited
-
 ## Contributing
 
 Contributions are welcome!
 
-Fork the repository
-Create your branch (feature/your-feature)
-Commit your changes
-Push to your fork
-Open a Pull Request
+- Fork the repository
+- Create your branch (feature/your-feature)
+- Commit your changes
+- Push to your fork
+- Open a Pull Request
 
 ## License
 
@@ -177,8 +169,8 @@ Project repository:
 https://github.com/wkusmirek/mONiTor
 
 ## Acknowledgments
-https://prometheus.io/
-https://grafana.com/
+https://prometheus.io
+https://grafana.com
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 <!-- MARKDOWN LINKS -->
