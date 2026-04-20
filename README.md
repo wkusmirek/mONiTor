@@ -1,23 +1,30 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![License][license-shield]][license-url]
+<p align="center">
+  <a href="https://github.com/wkusmirek/mONiTor/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/wkusmirek/mONiTor.svg?style=for-the-badge">
+  </a>
+  <a href="https://github.com/wkusmirek/mONiTor/network/members">
+    <img src="https://img.shields.io/github/forks/wkusmirek/mONiTor.svg?style=for-the-badge">
+  </a>
+  <a href="https://github.com/wkusmirek/mONiTor/stargazers">
+    <img src="https://img.shields.io/github/stars/wkusmirek/mONiTor.svg?style=for-the-badge">
+  </a>
+  <a href="https://github.com/wkusmirek/mONiTor/issues">
+    <img src="https://img.shields.io/github/issues/wkusmirek/mONiTor.svg?style=for-the-badge">
+  </a>
+  <a href="https://github.com/wkusmirek/mONiTor/blob/master/LICENSE.txt">
+    <img src="https://img.shields.io/github/license/wkusmirek/mONiTor.svg?style=for-the-badge">
+  </a>
+</p>
 
-<br />
-<div align="center">
-  <h1 align="center">mONiTor</h1>
+<h1 align="center">mONiTor</h1>
 
-  <p align="center">
-    Real-time monitoring system for Oxford Nanopore sequencing runs
-    <br />
-    <!--<a href="http://eve.ii.pw.edu.pl:9007/dashboards/?tag=mONiTor"><strong>View Demo</strong></a>-->
-    <!--·-->
-    <a href="https://github.com/wkusmirek/mONiTor/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/wkusmirek/mONiTor/issues">Request Feature</a>
-  </p>
-</div>
+<p align="center">
+  Real-time monitoring system for Oxford Nanopore sequencing runs
+  <br /><br />
+  <a href="https://github.com/wkusmirek/mONiTor/issues">Report Bug</a>
+  ·
+  <a href="https://github.com/wkusmirek/mONiTor/issues">Request Feature</a>
+</p>
 
 ---
 
