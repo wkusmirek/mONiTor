@@ -1,29 +1,11 @@
 <p align="center">
-  <a href="https://github.com/wkusmirek/mONiTor/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/wkusmirek/mONiTor.svg?style=for-the-badge">
-  </a>
-  <a href="https://github.com/wkusmirek/mONiTor/network/members">
-    <img src="https://img.shields.io/github/forks/wkusmirek/mONiTor.svg?style=for-the-badge">
-  </a>
-  <a href="https://github.com/wkusmirek/mONiTor/stargazers">
-    <img src="https://img.shields.io/github/stars/wkusmirek/mONiTor.svg?style=for-the-badge">
-  </a>
-  <a href="https://github.com/wkusmirek/mONiTor/issues">
-    <img src="https://img.shields.io/github/issues/wkusmirek/mONiTor.svg?style=for-the-badge">
-  </a>
-  <a href="https://github.com/wkusmirek/mONiTor/blob/master/LICENSE.txt">
-    <img src="https://img.shields.io/github/license/wkusmirek/mONiTor.svg?style=for-the-badge">
-  </a>
+  <img src="img/logo.png" alt="mONiTor logo" width="180">
 </p>
 
-<h1 align="center">mONiTor</h1>
-
 <p align="center">
-  Real-time monitoring system for Oxford Nanopore sequencing runs
-  <br /><br />
-  <a href="https://github.com/wkusmirek/mONiTor/issues">Report Bug</a>
-  ·
-  <a href="https://github.com/wkusmirek/mONiTor/issues">Request Feature</a>
+  <img src="https://img.shields.io/github/stars/wkusmirek/mONiTor?style=for-the-badge">
+  <img src="https://img.shields.io/github/forks/wkusmirek/mONiTor?style=for-the-badge">
+  <img src="https://img.shields.io/github/issues/wkusmirek/mONiTor?style=for-the-badge">
 </p>
 
 ---
