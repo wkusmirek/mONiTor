@@ -1,5 +1,3 @@
-<a name="readme-top"></a>
-
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -134,16 +132,16 @@ password: admin
 ```
 
 ## Use Cases
-Monitoring long-running nanopore sequencing experiments
-Managing multiple sequencing devices in core facilities
-Detecting anomalies (temperature, pore activity, disk usage)
-Tracking sequencing output in real time
+- Monitoring long-running nanopore sequencing experiments
+- Managing multiple sequencing devices in core facilities
+- Detecting anomalies (temperature, pore activity, disk usage)
+- Tracking sequencing output in real time
 
 ## Performance
-Low CPU and RAM usage
-Exporters are passive (triggered by Prometheus)
-Linear disk usage growth (Prometheus database)
-Suitable for long-running experiments
+- Low CPU and RAM usage
+- Exporters are passive (triggered by Prometheus)
+- Linear disk usage growth (Prometheus database)
+- Suitable for long-running experiments
 
 ## Contributing
 
@@ -169,8 +167,7 @@ Project repository:
 https://github.com/wkusmirek/mONiTor
 
 ## Acknowledgments
-https://prometheus.io
-https://grafana.com
+- https://prometheus.io
+- https://grafana.com
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 <!-- MARKDOWN LINKS -->
