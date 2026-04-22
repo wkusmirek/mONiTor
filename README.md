@@ -117,7 +117,7 @@ Default credentials:
 
 ```
 username: admin
-password: admin
+password: adminadmin
 ```
 
 ## Use Cases
