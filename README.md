@@ -102,6 +102,7 @@ One central instance can monitor **multiple sequencing devices across different 
 ```bash
 git clone https://github.com/wkusmirek/mONiTor.git
 cd mONiTor
+chmod -R 777 grafana
 docker-compose up
 ```
 
